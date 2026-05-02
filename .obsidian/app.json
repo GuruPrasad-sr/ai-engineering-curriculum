@@ -11,7 +11,5 @@
   "useMarkdownLinks": false,
   "newLinkFormat": "shortest",
   "attachmentFolderPath": "assets",
-  "alwaysUpdateLinks": true,
-  "baseFontSize": 16,
-  "enabledCssSnippets": []
+  "alwaysUpdateLinks": true
 }
