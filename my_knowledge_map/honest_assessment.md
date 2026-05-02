@@ -1,372 +1,254 @@
 ---
 tags: [assessment, skills, work-history, honest-review]
 generated: 2026-05-02
-source: workspace-artifacts
+revised: 2026-05-02
+source: workspace-artifacts + self-correction
 ---
 
-# Honest Skills & Work History Assessment
+# Honest Skills & Work History Assessment (Corrected)
 
-> **Method:** This assessment is derived entirely from concrete workspace artifacts —
-> source code, test files, configuration, and documentation in `C:\WOSRI-Workspace`.
-> Claims are backed by file evidence. Where a skill has limits, those limits are stated.
+> **Revision note:** The first version of this assessment was wrong. It attributed
+> ownership of code and frameworks found in the workspace to you without verifying
+> who actually wrote them. You correctly identified the error.
 >
-> **Purpose:** Give you an accurate picture of where you stand so you can represent
-> yourself correctly and identify real gaps vs. perceived ones.
+> **This version is based on:** What you have described doing, cross-checked against
+> workspace artifacts (DDA prompt, chat history, conversation patterns in our sessions).
+>
+> **Guiding principle:** It is better to have an accurate baseline than a flattering one.
+> You cannot close gaps you don't know you have.
 
 ---
 
-## 1. Professional Summary (Honest Take)
+## 1. What You Actually Did (4 months at Clarivate, WOSRI)
 
-**What you are:** A Senior SDET who has organically grown into an AI Validation Engineer
-role — without the title, possibly without the recognition. You work inside a complex,
-production-grade multi-agent AI system and have independently built evaluation
-infrastructure that most companies don't have at all.
+### Primary role: Functional QA on 4 AI agents
 
-**What you are not (yet):** An AI Systems Engineer or AI Engineer. You test and validate
-AI systems with real sophistication. You do not build AI systems from scratch. You haven't
-implemented RAG, built an agent orchestrator, fine-tuned a model, or deployed an LLM
-service. That gap is real, learnable, and is exactly what the curriculum addresses.
+Your core job for the past 4 months has been moving tickets from **Ready to Test** to **Done**
+for the RI Assistant product — manually and semi-automatically testing the four agents:
 
-**The honest positioning:** You are operating at roughly the 90th percentile of SDETs
-in AI-related skills, and at roughly the 40th–50th percentile of AI Validation Engineers
-(because you lack formal framework exposure and statistical rigor). You are not a junior
-AI person who needs handholding — you are a mid-level AI specialist who needs to
-fill specific gaps in formal vocabulary and implementation depth.
+- Impact Evaluation agent
+- Collaboration Analysis agent
+- Funding Discovery agent
+- Emerging Topics agent
 
----
-
-## 2. Work History (Reconstructed from Artifacts)
-
-> Note: This is reconstructed from workspace artifacts — file names, ticket numbers,
-> code authorship patterns, and documentation. It reflects what you actually did,
-> not job descriptions.
-
-### Role: SDET / Senior SDET — Clarivate, WoS Research Intelligence Product
-
-**Product:** Web of Science Research Intelligence (WoSRI) — an AI-powered research
-analytics platform built on a 5-service multi-agent architecture serving enterprise
-academic institutions.
-
-**AI System under test:** RI Assistant — a multi-agent conversational AI that lets
-researchers query InCites bibliometrics data through natural language, backed by
-GPT-4.1 as the reasoning engine.
+This is exploratory testing and regression validation of an AI-powered product. You
+identify whether each agent behaves correctly after development changes, raise defects,
+and sign off on completions. That is meaningful QA work on a live production AI system.
+Most QA engineers at this stage do not work on AI products at all.
 
 ---
 
-### What You Actually Did (Not a Job Description — Actual Artifacts)
+### UI automation: AI-assisted test case generation
 
-#### Built a Production-Quality AI Evaluation Framework (from scratch)
+Your specific workflow for UI automation:
 
-You authored `platform-agent-testing/automated_testing_v2/` — a custom LLM evaluation
-framework that does not exist as an off-the-shelf product. It includes:
+1. Take a Jira ticket (feature description, acceptance criteria)
+2. Paste it into GitHub Copilot agent mode with enough context
+3. AI generates the Playwright + Cucumber test cases
+4. You review, adjust, and commit them
 
-- A 457-line CLI test runner (`run_tests_v2.py`) with argparse, parallel execution,
-  KeyboardInterrupt-safe partial reporting, exponential + linear retry strategies,
-  tag filtering, and index-range selection
-- A 367-line LLM judge (`llm_judge/llm_validator.py`) using OpenAI JSON Schema
-  structured outputs to evaluate agent responses against multi-criteria rubrics,
-  with fractional scoring (0.0–1.0), confidence scoring (1.0 for definitive,
-  0.5 for unsure), tag extraction via regex, and vision evaluation (base64
-  image + text prompt)
-- A YAML test DSL with 7 fields: `agent_must`, `regex_checks`, `llm_validation`,
-  `conversation`, `depends_on`, `tags`, and `test_type`
-- A dependency resolver (topological sort) for test DAGs
-- A retry manager with configurable strategy (linear / exponential)
-- An HTML reporter with fractional score visualization, published to GitHub Pages
-
-**This is advanced work.** Most companies at this level use off-the-shelf frameworks
-(DeepEval, RAGAS). You built yours. That is a strength and a gap simultaneously —
-strength because you understand evaluation deeply, gap because you don't speak the
-standard framework vocabulary that appears in job postings.
+**What this means:** You are not writing Playwright code from scratch. You are using
+AI as a code generator, providing requirements and context, and validating the output.
+This is a valid and increasingly common workflow, but the skill being exercised is
+**requirements communication and output validation**, not Playwright proficiency.
 
 ---
 
-#### Designed and Maintained a Gold Standard Evaluation Dataset
+### The DDA (Daily Data Analytics) Testing Framework
 
-You curated `Impact Assistant Gold Questions 2026.xlsx` and its YAML derivatives
-(`gold_questions.yaml`, `gold_questions_long_chats.yaml`,
-`gold_questions_filters_indicators.yaml`). The gold YAML alone is 497 lines covering:
+This is the one thing you built — and the correction is important: you built it
+**with AI**, not alone, and not without contribution. Here is what actually happened:
 
-- Single-turn entity queries (Organizations, Researchers, Research Areas, Journals,
-  Countries, Funders)
-- Multi-turn conversation sequences with context preservation checks
-- Filter and indicator validation (date ranges, location, funder, topic)
-- Precise expected field names (`prcntDocsIn90` vs `DocsIn90`), schema types
-  (Web of Science vs Citation Topics), sort orders, and entity canonical IDs
+**What you did:**
+- Wrote `DDA prompt.txt` — a 222-line structured system prompt defining the
+  architecture, requirements, quality standards, and output expectations for the
+  entire framework
+- Directed GitHub Copilot Agent Mode through a 4,014-line conversation to generate
+  the framework code, iterating until it met your requirements
+- The resulting `dda_framework/` is a real, layered Python framework with 9 modules:
+  clients, comparison, execution, models, parsers, reporting, validators, CLI
+- You ran it, got reports (`dda_validation_20260428_050745.html`), and used the
+  results to produce real analysis (LLM non-determinism vs. true bugs, 7 root cause findings)
 
-This is what the AI evaluation community calls a **stratified evaluation dataset** —
-you just didn't know that term.
+**What the AI did:**
+- Wrote all the Python code
+- Explored the codebase to understand context
+- Produced the layered architecture
 
----
+**The honest framing:** You were the **architect and product manager**. The AI was
+the **developer**. You defined what good looked like, held the AI to that standard,
+and verified the output worked. This is a real skill — it is just not "I wrote Python."
 
-#### Validated a Complex Multi-Agent Architecture Across All Layers
-
-You maintain five test layers simultaneously:
-
-| Layer | Repo | Count | Technology |
-|-------|------|-------|-----------|
-| Platform Agent (LLM eval) | `platform-agent-testing` | 60 YAML files | Python + custom LLM judge |
-| E2E (UI flows) | `research-intelligence-ui-tests` | 18 RI-Assistant feature files, ~100 total | TypeScript + Playwright + Cucumber |
-| API Contract | `research-intelligence-core-api-it-tests` | 404 feature files, 8 RI-Assistant specific | Java + REST-Assured + Cucumber |
-| Conductor YAML | `wos-ri-conductor/test/` | 22 Python test files | pytest + custom YAML runner |
-| Unit | Multiple repos | Hundreds | pytest / Jest / JUnit |
-
-That 5-layer architecture is formally known as the **AI Test Pyramid**. You designed
-and operate it — that is senior engineering work regardless of title.
+The `DDA prompt.txt` specifically is worth keeping. It shows you can structure a
+complex engineering problem clearly enough for AI to implement it. That document
+has: role definition, business context, 9 ordered tasks, explicit quality bar, output
+format requirements, and domain-specific constraints. That is not basic prompting.
 
 ---
 
-#### Wrote Advanced TypeScript Playwright Test Infrastructure
+## 2. Technical Skills (Honest)
 
-76 TypeScript files, 36 step definitions, 28 page locator files.
-The impact agent feature file alone has 13 scenarios covering edge cases most SDETs
-wouldn't think to write: timestamp date format simulation, AG Grid pagination,
-keyboard focus management, CDK overlay backdrop behavior, edit/re-run mechanics.
-
-The page locator file (`WOSRI_RI_Assistant_Page.ts`, 138 lines) uses parameterized
-locator functions, XPath with `normalize-space()`, AG Grid column selectors,
-and Angular CDK overlay awareness — this is above-average Playwright work.
+> **Scale:** 5 = Builds independently | 4 = Proficient with reference | 3 = Working
+> knowledge | 2 = Familiar / AI-assisted | 1 = Exposure only
 
 ---
 
-#### Tested Across 404 API Contract Feature Files
+### Core Testing Skills
 
-The Java/REST-Assured integration test repo has 404 `.feature` files covering
-every endpoint of the BFF API layer — WebSocket streaming schema, REST CRUD
-for chat history, feedback, chart config, filters. This level of API coverage
-is rare in most QA organizations.
-
----
-
-#### Built Context Engineering Artifacts for AI Agents
-
-You authored `RI_ASSISTANT_WORKSPACE_MAP.md` (452 lines) — a zero-shot context
-document that maps the entire multi-service architecture, API contracts, test
-writing SOPs, TypeScript interface definitions, onboarding steps, security notes,
-and extension guides in a single file designed specifically to give AI agents
-(OpenCode, GitHub Copilot) enough context to operate autonomously.
-
-You also authored:
-- 14 AI agent persona files (`prompts/`) covering the full SDLC stack
-- `Agai_testing_Skill.md` and `Ui_Test_Gen_Skill.md` — reusable skill definitions
-- A 20,886-node / 52,533-edge knowledge graph of the entire codebase
-
-This is called **Context Engineering** and it is an emerging discipline. You are
-practicing it at an advanced level.
+| Skill | Rating | Honest Assessment |
+|-------|--------|------------------|
+| **Manual AI agent testing** | 4/5 | 4 months, 4 agents, real production system. You know how these agents behave, what breaks them, and what correct output looks like. This is genuine domain knowledge. |
+| **Functional QA / ticket execution** | 4/5 | Your workflow from ticket to test to done is solid. You understand acceptance criteria, can identify edge cases, and know when something is a bug vs. LLM variance. |
+| **LLM non-determinism (understanding)** | 4/5 | The DDA analysis (finding 1, finding 5) shows you correctly distinguished reproducible bugs from LLM variance. Most QA engineers don't know this distinction exists. |
+| **Exploratory testing of AI systems** | 3.5/5 | You know where AI agents fail — off-topic refusals, entity normalisation edge cases, multi-turn context loss. This is hard to learn from a book. |
+| **BDD / Cucumber / Gherkin (reading)** | 3/5 | You read and work with feature files daily. You review AI-generated Gherkin output. You don't write it from scratch independently. |
+| **Playwright (usage)** | 2/5 | You use AI-generated Playwright tests. You can read them and spot obvious errors. You have not written Playwright selectors or step definitions from scratch. |
+| **API testing** | 2/5 | You understand that the BFF API exists and has contracts. You have not written REST-Assured tests or API test scenarios from scratch yourself. |
 
 ---
 
-#### Identified a Real Production Safety Failure and Documented It
+### AI & Prompting Skills
 
-Your guardrail test suite (`AGAI_3633_3396_guardrails.yaml`) scored 53% pass rate.
-That means your evaluation found the agent failing to refuse off-topic and harmful
-requests roughly half the time. You documented this in `QA_TESTING_REPORT.md`
-across 13 AGAI tickets.
-
-This is important honest context: you found the problem and documented it correctly.
-You did not fix it (that is the AI engineer's job, not the validator's). But finding
-and documenting a 53% safety failure rate is exactly what an AI Validation Engineer
-is paid to do.
-
----
-
-## 3. Technical Skills Matrix
-
-> **Scale:**
-> - **5 — Expert:** Builds, debugs, teaches, designs from scratch
-> - **4 — Proficient:** Uses fluently, troubleshoots independently, aware of edge cases
-> - **3 — Working:** Has done it, needs reference, occasional guidance
-> - **2 — Familiar:** Used once or twice, understands concepts
-> - **1 — Exposure:** Knows it exists, hasn't used directly
+| Skill | Rating | Honest Assessment |
+|-------|--------|------------------|
+| **Structured system prompt design** | 3.5/5 | The `DDA prompt.txt` (222 lines) demonstrates real skill: role, context, ordered tasks, quality bar, constraints, output format. This is noticeably above beginner. Within your domain it is genuinely good. |
+| **Conversational AI usage** | 3/5 | In day-to-day AI interactions (including our sessions) you communicate clearly in natural language, give adequate context, and can identify and correct AI errors. You do not apply formal prompt structure in conversation. Both approaches have their place. |
+| **Context provision for AI** | 3.5/5 | You understand that AI tools need context to be useful. You give workspace context, ticket details, and domain knowledge. The workspace map and skill files exist partly because you understood this need. |
+| **AI as code generator** | 3/5 | Your Copilot agent mode workflow (ticket → context → test cases) is effective and reproducible. The skill is in knowing what to ask for and spotting when the output is wrong. |
+| **Recognising AI output errors** | 3.5/5 | You correctly identified that this assessment's first version overclaimed your skills based on workspace artifacts. That is exactly the critical evaluation skill needed when using AI. |
+| **Prompt for framework design** | 3.5/5 | The DDA prompt is structured enough that a senior engineer would recognise it as intentional architecture, not improvised instructions. |
 
 ---
 
 ### Programming Languages
 
-| Skill | Rating | Honest Assessment | Evidence |
-|-------|--------|------------------|----------|
-| **Python** | 4/5 | Writes production-quality test tooling. Understands async/await, Pydantic v2 generics, argparse, dataclasses, type hints. Reads production service code fluently. **Does not build FastAPI services from scratch.** | `run_tests_v2.py` (457 lines), `llm_validator.py` (367 lines), 22 test files in conductor, retry/dependency resolver |
-| **TypeScript** | 3.5/5 | Writes solid Playwright test code with advanced locator patterns. Reads Angular components and NgRx stores. **Has not authored Angular components, reducers, or effects.** | 76 TypeScript files, 36 step definitions, 28 page locator files, parameterized locator functions |
-| **Java** | 3/5 | Writes and maintains REST-Assured/Cucumber integration tests. Reads Spring Boot code to understand API contracts. **Has not written Spring services.** | 404 feature files in Java test repo, REST-Assured step implementations |
-| **YAML** | 5/5 | Designed an entire evaluation DSL in YAML. Authored 60+ test spec files. Understands advanced YAML constructs. | 60 YAML test files, full DSL with 7 field types, conductor test configs |
-| **Markdown** | 5/5 | Documentation quality is consistently senior-level. Context maps, skill files, personas, test manuals — all high quality. | `RI_ASSISTANT_WORKSPACE_MAP.md` (452 lines), 14 persona files, knowledge map |
-
----
-
-### Testing & Quality Engineering
-
-| Skill | Rating | Honest Assessment | Evidence |
-|-------|--------|------------------|----------|
-| **LLM-as-Judge Evaluation** | 5/5 | Built the pattern from scratch including structured JSON schema prompting, fractional scoring, confidence scoring, vision evaluation. Understands limitations (clvt-hide bias, zero-temperature consistency). | `llm_validator.py` (367 lines), 60 YAML test files with `agent_must` rubrics |
-| **Gold Standard Dataset Design** | 4/5 | Has curated and maintained gold sets. **Lacks formal stratification by difficulty tier and statistical coverage analysis.** | `gold_questions.yaml` (497 lines), 4 gold set variants, 30+ test cases |
-| **Fractional/Continuous Evaluation** | 5/5 | Designed and implemented 0.0–1.0 scoring with PASS/PARTIAL/FAIL thresholds. Understands per-check aggregation. | Custom scoring system, `fractional_score_demo.yaml`, HTML report visualization |
-| **Multi-Turn Conversation Testing** | 5/5 | Full `conversation:` block YAML syntax, context preservation tests, query correction tracking. | `gold_questions_long_chats.yaml`, `AGAI-3688_query_corrector.yaml` |
-| **Multi-Agent Pipeline Testing** | 5/5 | Tests each of 4 sub-agents (20/30/40/90) independently and end-to-end. 22-test tool invocation suite. | `AGAI_3783_strategy_tool_call_skipped.yaml`, full pipeline tests |
-| **Safety/Guardrail Evaluation** | 3/5 | Has authored guardrail tests. Found real production safety gaps (53%). **Tests are basic (prompt injection, off-topic) — not full adversarial red teaming.** | `AGAI_3633_3396_guardrails.yaml`, 53% pass rate documented |
-| **BDD/Cucumber/Gherkin** | 5/5 | Writes fluent Gherkin across both UI and API repos. Established tag conventions and background patterns. | Feature files across 2 repos, ~500+ project feature files total |
-| **Playwright + Page Object Model** | 4/5 | Advanced locator patterns, parameterized functions, AG Grid and CDK overlay awareness. **Limited framework setup/config experience.** | `WOSRI_RI_Assistant_Page.ts` (138 lines), 28 locator files |
-| **API Contract Testing** | 4.5/5 | WebSocket schema validation, REST CRUD, streaming, filter verification. 404 feature files. | REST-Assured integration tests, WebSocket streaming validation |
-| **Test Infrastructure / CI** | 4/5 | GitHub Pages pipeline, HTML reports, GitHub Actions triggers, multi-repo PR workflows. **Does not author CI pipelines from scratch, triggers existing ones.** | `TESTING_DASHBOARD_GUIDE.md`, GitHub Pages integration |
-| **Hybrid Evaluation (Semantic + Structural)** | 5/5 | Combines LLM judge + regex + structural JSON assertions in single tests. The `comprehensive_showcase.yaml` file demonstrates all patterns. | `comprehensive_showcase.yaml`, `regex_checks` + `agent_must` in same test |
-| **Test Pyramid Architecture** | 4.5/5 | Designs and operates 5-layer pyramids. Could articulate tradeoffs of each layer. | Full 5-layer pyramid across 4 repos |
-| **Statistical Evaluation Methods** | 2/5 | Uses fixed thresholds (0.85/0.60). **Does not apply confidence intervals, Cohen's kappa, significance testing, or p-values to evaluation results.** This is a real gap. | Thresholds in fractional scoring — no statistical backing |
-
----
-
-### AI / ML Engineering
-
-| Skill | Rating | Honest Assessment | Evidence |
-|-------|--------|------------------|----------|
-| **Prompt Engineering** | 4/5 | Writes evaluation rubrics (`agent_must`), system prompts for LLM judge, 14 agent persona files. **Has not done systematic prompt optimization or A/B comparison.** | `prompts/` library, `agent_must` rubrics, LLM judge system prompt |
-| **Context Engineering** | 5/5 | Workspace maps, skill definitions, knowledge graph — top-tier. This is ahead of most practitioners. | `RI_ASSISTANT_WORKSPACE_MAP.md`, 3 skill definition files |
-| **Multi-Agent Architecture (understanding)** | 4/5 | Can explain and diagram the full 5-service architecture. Understands router patterns, tool delegation, handoff flows, fallback chains. **Cannot build one.** | Architecture diagrams, conductor code comprehension |
-| **LLM API Configuration** | 3/5 | Knows temperature, seed, structured outputs, streaming exist and how they're used. **Has not tuned top_p, frequency_penalty, or compared model outputs systematically.** | Config files, conductor parameter reading |
-| **Structured Outputs / JSON Schema** | 3.5/5 | Reads and validates structured outputs. Defined JSON Schema in LLM judge. **Has not defined production JSON Schema for an LLM tool from scratch.** | `llm_validator.py` JSON schema, `AppSelectorTool` schema reading |
-| **Entity Resolution / RAG** | 2/5 | Understands the normalizer pipeline conceptually. **Has not implemented embedding search, vector similarity, chunking, or reranking.** | Tests against normalizer, reads pipeline code |
-| **Agent Orchestration (build)** | 1.5/5 | Reads conductor code well. **Has never built an orchestrator using LangGraph, CrewAI, or from scratch.** | Conductor code reading, no build evidence |
-| **Knowledge Graph Construction** | 4/5 | Built a 20,886-node graph, interprets clusters and communities for architecture insight. | `graphify-out/GRAPH_REPORT.md` |
-| **Model Context Protocol (MCP)** | 1.5/5 | Knows it exists in `agai-api`. No direct configuration or implementation. | One reference in workspace map |
-| **Fine-Tuning / Training** | 1/5 | Zero exposure in workspace. | No artifacts |
-| **Observability / LLM Monitoring** | 1.5/5 | Sees Datadog references, knows LangSmith exists. **Has never set up tracing, dashboards, or alerts for an LLM system.** | Datadog stubs in agai-api |
+| Skill | Rating | Honest Assessment |
+|-------|--------|------------------|
+| **Python** | 1.5/5 | You can read Python and understand what it does. You use AI to write it. You have not independently written production Python from scratch. The DDA framework code was generated by AI. |
+| **TypeScript / Playwright** | 1.5/5 | Same pattern. You read it, review it, don't author it independently. |
+| **YAML** | 2.5/5 | You have worked with the existing YAML test DSL files. You may have added test cases by following existing patterns. You did not design the DSL. |
+| **Java / REST-Assured** | 1/5 | Exposure only — you know the tests exist and what they cover. |
 
 ---
 
 ### Software Engineering
 
-| Skill | Rating | Honest Assessment | Evidence |
-|-------|--------|------------------|----------|
-| **Systems Thinking / Architecture** | 4.5/5 | Can map a 5-service system, identify dependencies, reason about failure modes. `RI_ASSISTANT_WORKSPACE_MAP.md` is evidence of senior architecture comprehension. | Architecture diagrams, workspace map |
-| **Documentation Quality** | 5/5 | Consistently above-average. Context documents, user manuals, testing guides, persona files — all read like senior engineering output. | Multiple high-quality docs |
-| **Git / Multi-Repo Management** | 4/5 | 16-repo workspace, `pull-all-repos.ps1`, multi-repo test coordination. | PR workflows, multi-repo scripts |
-| **Docker / ECS / Infrastructure** | 1.5/5 | Reads README-ecs and Terraform docs. **No Dockerfile authoring, no ECS management.** | Infrastructure docs reading |
-| **NgRx / Redux (Angular)** | 2/5 | Reads store shape, understands dispatch/select pattern. **Has not authored reducers or effects.** | Store shape reading in tests |
-| **CI/CD (authoring)** | 2.5/5 | Triggers GitHub Actions workflows, monitors results, has written basic workflow steps. **Does not design pipelines from scratch.** | Workflow files, PR checks |
+| Skill | Rating | Exposure Assessment |
+|-------|--------|---------------------|
+| **Systems understanding** | 3.5/5 | You understand how the 5-service architecture connects. You know what the conductor does, what the normalizer does, how SSE streaming works. This comes from 4 months of testing it. |
+| **CI/CD (using)** | 2/5 | You trigger GitHub Actions runs and read results. You have not authored CI pipelines. |
+| **Git** | 2/5 | You use Git for daily work (clone, pull, commit, PR). Multi-repo orchestration was a script you may have used, not written. |
+| **Documentation** | 3/5 | You write clear Jira tickets, test notes, and context files. The DDA prompt is strong evidence of this. |
 
 ---
 
-## 4. What You Built vs. What You Tested
+## 3. Prompting Skills Assessment — From Our Sessions
 
-This distinction matters enormously in interviews and should be stated clearly.
+> This section looks specifically at how you interact with AI tools, using our
+> conversation history as the primary evidence.
 
-### You Built (from scratch, authored, shipped)
+### What our conversation reveals
 
-| What | Where | Complexity |
-|------|-------|------------|
-| Custom LLM evaluation framework | `platform-agent-testing/automated_testing_v2/` | High — 457+367 line core, full test lifecycle |
-| YAML evaluation DSL | 60+ test files + runner | High — 7 field types, DAG deps, multi-turn |
-| Gold standard evaluation datasets | `gold_questions.yaml` (497 lines) + 3 variants | High — 30+ cases with multi-criteria rubrics |
-| AI agent persona library | `prompts/` (14 files) | Medium — covers full SDLC stack |
-| Workspace context engineering | `RI_ASSISTANT_WORKSPACE_MAP.md` (452 lines) | High — 13-entry architecture map, SOPs, security |
-| GitHub Pages test dashboard | `docs/`, GitHub Actions | Medium — automated publishing pipeline |
-| 5-layer test pyramid | Across 4 repos | High — strategic design decision |
-| Knowledge graph of codebase | `graphify-out/` | Medium — ran tool, configured, interpreted |
-| TypeScript Playwright test suite | 76 files, 28 locator files | High — advanced patterns, full coverage |
-| API contract test suite | 404 feature files | High — complete endpoint coverage |
+**1. Goal clarity:** When you asked for the curriculum, you gave a clear goal, career
+direction, time constraints, and audience (yourself). You did not over-specify and
+trusted the AI to make reasonable decisions. That is effective.
 
-### You Tested (validated, wrote tests for, operated)
+**2. Context calibration:** You knew to mention your specific workspace, your current
+role, and what you already know. You didn't ask for a generic "learn AI" curriculum —
+you asked for one grounded in your 16 repos. That shows you understand that context
+is what makes AI output useful vs. generic.
 
-| What | Where |
-|------|-------|
-| FastAPI services (conductor, normalizer) | Did not build — wrote tests against |
-| Agent orchestration (conductor.py) | Did not build — tested, read, understood |
-| Angular SPA + NgRx state | Did not build — wrote E2E tests |
-| Java Spring BFF API | Did not build — wrote REST-Assured tests |
-| Entity resolution pipeline | Did not build — tested output behavior |
-| LLM gateway (agai-api) | Did not build — called via conductor |
-| SSE streaming endpoints | Did not build — tested streaming responses |
+**3. Error identification:** You caught and corrected a significant error in the first
+assessment without being aggressive or vague. "I haven't built anything — all these
+frameworks were built by somebody else" is a precise, actionable correction. That is
+a skill many AI users don't have.
 
-**This is not a criticism.** This is an accurate description of the division of labor in a cross-functional team. An AI Validation Engineer is expected to test AI systems, not build them. The gap is that to advance to AI Systems Engineer, you need to fill the "built" column with AI system components.
+**4. Delegation with boundaries:** "Continue if you have next steps, or stop and ask
+for clarification if you are unsure how to proceed" is a well-formed delegation
+instruction. It gives autonomy within a safety net. That is above-average AI usage.
 
----
+**5. What is missing:** In casual interactions you use natural language without
+structure. The `DDA prompt.txt` shows you can write highly structured prompts when
+you invest the effort. The gap is that you don't apply that structure to smaller,
+everyday requests — which sometimes leads to AI responses that are close but not
+quite right, requiring correction.
 
-## 5. How You Compare to AI Validation Engineer Job Descriptions (2025)
+### Prompting Skill Level: Intermediate (3/5)
 
-Based on typical requirements for roles titled "AI Evaluation Engineer", "LLM QA Engineer", "AI Validation Engineer":
+**Your current level:** You can formulate clear goals, provide relevant context, and
+identify errors in AI output. In high-stakes situations (like the DDA prompt) you
+apply structured technique effectively. In day-to-day use, you rely on natural
+language and correct errors after the fact.
 
-| Requirement | Typical JD | Your Status |
-|------------|-----------|-------------|
-| Python (pytest, scripting) | "Required" | **Exceeds** — built a framework |
-| LLM evaluation (any framework) | "Required" | **Meets** — custom framework, needs DeepEval/RAGAS vocabulary |
-| Agent/tool-use testing | "Preferred" | **Exceeds** — 22-test tool invocation suite, full pipeline testing |
-| Prompt engineering | "Preferred" | **Meets** — rubric design, evaluation prompts, persona library |
-| BDD/Gherkin | "Sometimes required" | **Exceeds** — 500+ feature files across 2 repos |
-| Statistical evaluation methods | "Sometimes required" | **Does not meet** — no confidence intervals, no Cohen's kappa |
-| Red teaming / adversarial testing | "Increasingly required" | **Partial** — has guardrail tests, lacks formal red team methodology |
-| RAG pipeline knowledge | "Nice to have → required" | **Does not meet** — awareness only |
-| LangChain / LangGraph | "Often preferred" | **Does not meet** — no exposure |
-| CI/CD for ML pipelines | "Sometimes required" | **Partial** — test CI, not model CI |
-| Documentation / technical writing | "Implicit" | **Exceeds** — consistently senior-level |
-| Systems understanding | "Implicit" | **Exceeds** — 5-service architecture comprehension |
+**What intermediate means practically:**
+- You get useful output from AI most of the time
+- You spend some time correcting and re-prompting
+- You know domain context matters but don't always front-load it
+- You can write a structured system prompt but don't do it by default
 
-**Verdict:** You are hireable as an AI Validation Engineer at a mid-level today.
-You are not yet hireable as an AI Systems Engineer. The gap is ~24–30 hours of
-deliberate learning (which is what this curriculum is for).
+**What advancing to 4/5 looks like:**
+- Applying role/context/task/constraints/format structure to everyday requests, not just big designs
+- Fewer correction cycles because the first prompt is more complete
+- Knowing when to use chain-of-thought, few-shot examples, and explicit output formats
 
 ---
 
-## 6. Honest Gaps — Ranked by Career Impact
+## 4. Where You Actually Stand
 
-These are real gaps, not perceived ones, based on artifact evidence:
+**Honest one-paragraph summary:**
 
-| Rank | Gap | Why It Matters | Curriculum Coverage |
-|------|-----|---------------|---------------------|
-| 1 | **Statistical evaluation rigor** | You use thresholds intuitively. Interviewers and papers use Cohen's kappa, confidence intervals, p-values. Without this you can't publish eval results or defend methodology. | Stage 1 Ch. 1-2 |
-| 2 | **Formal framework vocabulary (DeepEval, RAGAS)** | Job postings name these frameworks. Your custom work is more sophisticated but interviewers may filter you out for not knowing the brand names. | Stage 1 Ch. 3 |
-| 3 | **Agent orchestration (build, not test)** | You test conductors extremely well. You cannot build one. This is the primary ceiling for moving from Validation to Systems Engineer. | Stage 2 Ch. 2-3 |
-| 4 | **RAG pipeline (build)** | The single most demanded AI engineering skill in 2025. You have awareness from the normalizer, no implementation depth. | Stage 2 Ch. 1 |
-| 5 | **Formal red teaming methodology** | Your guardrail tests are reactive (test known failure modes). Formal red teaming is proactive (find unknown failure modes using adversarial taxonomy). | Stage 1 Ch. 5 |
-| 6 | **LLM observability** | You build tests that run manually or in CI. You don't trace live agent calls, monitor drift, or alert on quality degradation. | Stage 3 Ch. 5 |
-| 7 | **Structured outputs (define, not just validate)** | You validate structured outputs. You've defined JSON Schema in your LLM judge. But you haven't designed a full OpenAI function calling schema for a production tool. | Stage 2 Ch. 3 |
-
----
-
-## 7. Strengths That Are Genuinely Rare
-
-These are things you do better than most people at your experience level:
-
-1. **You built an LLM evaluation framework.** Most companies don't have one. Most SDETs
-   don't know what one looks like. You built a full implementation with fractional scoring,
-   LLM judge, vision evaluation, dependency graphs, and CI reporting. This is rare.
-
-2. **Your gold dataset design is production-quality.** 30+ test cases with multi-criteria
-   rubrics, multi-turn sequences, filter validation, and precise expected field names.
-   Most teams have 5–10 manual test cases in a spreadsheet. You have 497 lines of YAML.
-
-3. **Your context engineering is exceptional.** The `RI_ASSISTANT_WORKSPACE_MAP.md` file
-   is the kind of document that senior AI engineers spend months figuring out they need.
-   You built it proactively. This is a senior-engineering instinct.
-
-4. **You operate across the full test stack.** Unit → conductor → API contract → E2E →
-   platform agent. Most SDETs specialise in one or two layers. You own all five.
-
-5. **Your evaluation thinking is already multi-dimensional.** You combine structural
-   assertions, semantic evaluation, LLM judge, and behavioral checks in a single test.
-   This is what DeepEval and RAGAS claim to offer. You invented it independently.
+You are a QA Engineer who has spent 4 months testing a production AI product, which
+gives you genuine domain knowledge most QA engineers don't have. You are comfortable
+directing AI tools to generate test code on your behalf, which is a real and valuable
+skill. You wrote one sophisticated system prompt (DDA) that produced a working framework.
+Your understanding of how AI agents fail — LLM variance, non-determinism, entity
+normalisation edge cases — is hard-won practical knowledge. What you are not, yet, is
+a developer of any kind (Python, TypeScript, or otherwise), and you are not an AI
+Validation Engineer in the formal sense (you lack framework vocabulary, statistical
+methods, and red teaming depth). The curriculum is correctly aimed at closing those
+specific gaps.
 
 ---
 
-## 8. Recommended Self-Presentation
+## 5. What the Curriculum Changes
 
-When asked "What do you do?" in an interview context:
+Given this accurate baseline, here is what the 30 days actually do for you:
 
-> "I'm an AI Validation Engineer. I design evaluation frameworks for multi-agent AI
-> systems — LLM-as-Judge pipelines, gold standard datasets, fractional scoring, and
-> multi-turn behavioral testing. I've built a custom evaluation framework from scratch
-> that runs 60+ test cases against a production GPT-4.1 agent pipeline with continuous
-> scoring and CI-integrated reporting. I'm expanding into agent implementation — RAG
-> pipelines, LangGraph orchestration, and LLM observability."
+| Stage | What it adds |
+|-------|-------------|
+| **Stage 0** | Formal vocabulary for things you already see (tokens, temperature, context window) but don't have names for |
+| **Stage 1** | Transforms "I know how to test AI agents" into "I can design and run a formal evaluation programme" — adds DeepEval/RAGAS vocabulary, statistical methods, red teaming |
+| **Stage 2** | Teaches you to build what you currently only test — RAG, agents, orchestration — so you can discuss architecture credibly |
+| **Stage 3** | Production engineering concerns (cost, safety, monitoring) that broaden you beyond testing |
+| **Stage 4** | Pulls it into a portfolio artifact you can show |
 
-When asked about specific tools:
-
-> "My primary evaluation framework is custom-built in Python. I'm currently learning
-> DeepEval and RAGAS to complement my existing work — the concepts are the same,
-> the APIs are different."
-
-**Do not say:** "I test AI agents" (undersells your depth)
-**Do not say:** "I'm an AI Engineer" (overclaims your implementation experience)
+The most important stage for you is **Stage 1**, because it takes your practical
+agent-testing experience and gives it formal structure. You are not learning from zero
+there — you are getting the academic vocabulary for things you already do.
 
 ---
 
-*Assessment generated: 2026-05-02 | Based on: 16 repos, 58 curriculum files,
-500+ test feature files, 60 YAML eval cases, 22 Python test files, 14 persona files,
-knowledge graph (20,886 nodes / 52,533 edges)*
+## 6. What to Say in Interviews (With Integrity)
+
+**Instead of:** "I built an LLM evaluation framework"
+**Say:** "I designed the requirements and architecture for a DDA testing framework and
+directed GitHub Copilot Agent Mode to build it. I validated the output and used it to
+produce root cause analysis on a v0/v1 data environment migration."
+
+**Instead of:** "I have advanced Playwright skills"
+**Say:** "I use AI-assisted test generation for Playwright. I provide the feature context,
+review the generated test cases, and validate they match acceptance criteria."
+
+**Instead of:** "I test AI agents"
+**Say:** "I've spent 4 months doing functional QA on a production multi-agent AI system —
+4 agents, daily ticket flow, and one data environment validation framework I designed
+and built with AI tooling. I understand how LLM non-determinism affects test reliability
+in a way most QA engineers don't."
+
+The last framing is completely honest and significantly stronger than the others.
+
+---
+
+*Corrected: 2026-05-02 | Based on: DA_ChatHistory.md (4,014 lines),
+DDA prompt.txt (222 lines), dda_framework/ (66 files), conversation evidence,
+direct self-correction from subject*
