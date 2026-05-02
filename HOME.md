@@ -19,7 +19,7 @@ tags: [home, dashboard]
 | [[stage_3_ai_engineering/README\|Stage 3: AI Engineering]] | 23–28 | ~13 hrs | [[stage_3_ai_engineering/concepts\|Concepts]] · [[stage_3_ai_engineering/live_examples\|Live Examples]] · [[stage_3_ai_engineering/exercises/week4_exercises\|Exercises]] · [[stage_3_ai_engineering/mini_project/PROJECT\|Mini Project]] |
 | [[stage_4_expert_capstone/README\|Stage 4: Capstone]] | 29–30 | ~5 hrs | [[stage_4_expert_capstone/concepts\|Concepts]] · [[stage_4_expert_capstone/exercises/capstone_planning\|Exercises]] · [[stage_4_expert_capstone/mini_project/CAPSTONE_SPEC\|EvalForge Spec]] |
 
-**Reference:** [[ROADMAP\|Master Roadmap]] · [[gap_analysis/skill_gap_report\|Skill Gap Report]] · [[my_knowledge_map/informal_to_formal_mapping\|Skills Mapped]]
+**Reference:** [[ROADMAP\|Master Roadmap]] · [[gap_analysis/skill_gap_report\|Skill Gap Report]] · [[my_knowledge_map/informal_to_formal_mapping\|Skills Mapped]] · [[my_knowledge_map/honest_assessment\|Honest Assessment]]
 
 ---
 
