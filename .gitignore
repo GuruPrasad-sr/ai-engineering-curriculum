@@ -1,0 +1,16 @@
+# Obsidian workspace settings
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+
+# Local plugin data that shouldn't sync
+.obsidian/plugins/obsidian-git/data.json.bak
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+*.tmp
+*.swp
+*~

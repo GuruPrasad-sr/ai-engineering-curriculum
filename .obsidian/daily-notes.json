@@ -1,0 +1,6 @@
+{
+  "folder": "daily_notes",
+  "template": "templates/Daily_Progress",
+  "format": "YYYY-MM-DD",
+  "autorun": false
+}
