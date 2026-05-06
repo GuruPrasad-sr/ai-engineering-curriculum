@@ -14,15 +14,16 @@ status: active
 
 ## At a Glance
 
-| Month | Theme | Course | Python Phase | Project |
+| Weeks | Theme | Course | Python Phase | Project |
 |-------|-------|--------|-------------|---------|
-| 1 (Wks 1–4) | LLM Foundations | Core Track (selected) | Survival Python | — |
-| 2 (Wks 5–8) | Agents + Evaluation | Agentic Track (all) | AI Engineering Python | Project 1 starts |
-| 3 (Wks 9–12) | Production + Portfolio | Production Track + Core remainder | Independent Authorship | Projects 1–4 |
+| 1–2 | LLM Foundations | Core Track — Fundamentals + Embeddings | Survival Python | — |
+| 3–6 | Agent Architecture + Evaluation | Agentic Track — all of it (moved earlier) | AI Engineering Python | — |
+| 7–8 | RAG + Prompting | Core Track — RAG + Prompting sections | AI Engineering Python | Project 4 starts |
+| 9–12 | Production + Portfolio | Production Track | Independent Authorship | Projects 1–4 |
 
 ---
 
-## MONTH 1 — LLM Foundations
+## MONTH 1 — LLM Foundations + Agent Architecture (Weeks 1–4)
 
 ### Week 1: How LLMs Work
 
@@ -100,99 +101,20 @@ that isolates which component is failing, with a test for each hypothesis."
 
 ---
 
-### Week 3: RAG Pipeline Architecture
-
-| Element | Detail |
-|---------|--------|
-| **Course section** | Core Track: RAG pipeline (retrieval → augmentation → generation) |
-| **Watch speed** | 1x — build the code example as you watch |
-| **Python exercise** | Week 3: Call an LLM API from scratch, print response + token count + time |
-| **WOSRI task** | Trace the full RI Assistant query flow. Label each step R, A, or G. |
-| **Build** | Minimal RAG: 10 text "papers" → embed → store → query → generate answer |
-| **Friday integration** | Write 3 test cases targeting RAG failure modes: irrelevant retrieval, empty retrieval, conflicting docs |
-| **Milestone** | Can build a working (minimal) RAG system from scratch |
-| **Stage 2 curriculum ref** | `stage_2_ai_systems/concepts.md` — RAG chapter |
-
-**Confidence Checklist — Week 3:**
-- [ ] L1: Can explain RAG in one sentence (what it solves, how it works)
-- [ ] L1: Can explain why LLMs hallucinate less with RAG than without
-- [ ] L2: Can label every component of RI Assistant as R, A, or G
-- [ ] L2: Can write tests for all 3 RAG failure modes
-- [ ] L3: Can explain the tradeoffs of different chunking strategies for research paper indexing
-- [ ] L3: Can diagnose a "confidently wrong" RI Assistant answer at the RAG failure level
-
-**3-Level Scenario Questions — Week 3:**
-
-*Level 1 — Conceptual:*
-"Explain RAG to a non-technical product manager who wants to know why RI Assistant
-sometimes gives wrong answers even though it 'has access to the research database'."
-
-*Level 2 — Applied:*
-"The Funding Discovery agent is returning answers about author impact instead of funding.
-Is this a retrieval failure, an augmentation failure, or a generation failure? How do you tell?"
-
-*Level 3 — Systems/Expert:*
-"You are designing the test strategy for a RAG system that will index 50 million research papers.
-What are the 5 failure modes you must cover? For each: the test type, the expected behaviour,
-and what it would cost the user if it fails silently."
-
----
-
-### Week 4: Prompting Techniques
-
-| Element | Detail |
-|---------|--------|
-| **Course section** | Core Track: Prompting (system prompts, few-shot, chain-of-thought, adversarial) |
-| **Watch speed** | 1.5x for concepts, 1x for code examples |
-| **Python exercise** | Week 4: PromptTemplate class with .render() and .validate() methods |
-| **WOSRI task** | Locate the 4 WOSRI agent system prompts. Rate each on: role clarity, constraint specificity, output format guidance |
-| **Build** | 5 adversarial test queries designed to break each WOSRI agent out of scope |
-| **Friday integration** | Review `DDA prompt.txt` with new vocabulary. Document: what it does well, what it would change |
-| **Milestone** | Can review any system prompt and predict its failure modes |
-| **Stage 1 curriculum ref** | `stage_1_ai_validation/concepts.md` — prompting chapter |
-
-**Confidence Checklist — Week 4:**
-- [ ] L1: Can explain the difference between zero-shot, few-shot, and chain-of-thought prompting
-- [ ] L1: Can explain what prompt injection is and why it matters for AI testing
-- [ ] L2: Can review any WOSRI system prompt and identify its weaknesses
-- [ ] L2: Can write 5 adversarial inputs for any given agent scope
-- [ ] L3: Can design a prompt robustness test suite (scope violations, injection attempts, conflicting instructions)
-- [ ] L3: Can explain why the DDA prompt.txt works well and what structured prompt design principles it uses
-
-**3-Level Scenario Questions — Week 4:**
-
-*Level 1 — Conceptual:*
-"What is chain-of-thought prompting, and under what circumstances does it improve
-LLM output quality? When does it make things worse?"
-
-*Level 2 — Applied:*
-"A user discovers that if they include 'ignore your previous instructions' in a WOSRI query,
-the agent changes its behaviour. What happened? What test should have caught this?
-How would you fix it at the prompt level?"
-
-*Level 3 — Systems/Expert:*
-"You are designing a prompt robustness standard for all 4 WOSRI agents.
-Define: what does 'robust' mean for a production AI agent's system prompt?
-What are the 5 dimensions you would test? How would you score them?"
-
----
-
-## MONTH 2 — Agents + Evaluation
-
-### Week 5: Agent Architecture
+### Week 3: Agent Architecture
 
 | Element | Detail |
 |---------|--------|
 | **Course section** | Agentic Track: Agent fundamentals, tool calling, ReAct pattern |
 | **Watch speed** | 1x — this maps directly to your daily WOSRI work |
-| **Python exercise** | Week 5: AgentTestCase dataclass with all fields |
+| **Python exercise** | Week 3: Call an LLM API from scratch, print response + token count + time |
 | **WOSRI task** | Trace 1 full agent execution from conductor → tool → LLM → response with file references |
 | **Build** | Minimal tool-calling agent: 3 tools (search, calculate, format), 1 task |
 | **Friday integration** | Catalogue all WOSRI tools: name, purpose, failure mode, missing test |
 | **Milestone** | Can draw the execution trace of any WOSRI agent with formal tool-calling vocabulary |
 | **Stage 2 curriculum ref** | `stage_2_ai_systems/concepts.md` — agents chapter |
 
-**Confidence Checklist — Week 5:**
+**Confidence Checklist — Week 3:**
 - [ ] L1: Can explain the ReAct pattern (Reason → Act → Observe loop)
 - [ ] L1: Can explain what tool calling is and why it matters
 - [ ] L2: Can trace any WOSRI agent's execution with file path references
@@ -200,7 +122,7 @@ What are the 5 dimensions you would test? How would you score them?"
 - [ ] L3: Can explain what happens when AppSelectorTool selects the wrong agent
 - [ ] L3: Can design a test strategy that covers agent decision-making, not just agent output
 
-**3-Level Scenario Questions — Week 5:**
+**3-Level Scenario Questions — Week 3:**
 
 *Level 1 — Conceptual:*
 "Explain the ReAct agent pattern. Why is 'Reason + Act' better than just 'Act'?
@@ -218,20 +140,20 @@ Design: the test dataset, the evaluation criteria, the edge cases, and the monit
 
 ---
 
-### Week 6: Multi-Agent Systems
+### Week 4: Multi-Agent Systems
 
 | Element | Detail |
 |---------|--------|
 | **Course section** | Agentic Track: Multi-agent coordination, handoffs, parallel execution, shared state |
 | **Watch speed** | 1x |
-| **Python exercise** | Week 6: Error handling + retry logic (3 attempts, exponential backoff) |
+| **Python exercise** | Week 4: PromptTemplate class with .render() and .validate() methods |
 | **WOSRI task** | Map the 4-agent coordination pattern: is it parallel, sequential, or conditional routing? |
 | **Build** | 2-agent system with orchestrator: routes to Agent A (data) or Agent B (analysis) |
 | **Friday integration** | Write 5 cross-agent test cases (routing correctness, not just output quality) |
 | **Milestone** | Can explain WOSRI's multi-agent architecture using formal vocabulary |
 | **Stage 2 curriculum ref** | `stage_2_ai_systems/concepts.md` — orchestration chapter |
 
-**Confidence Checklist — Week 6:**
+**Confidence Checklist — Week 4:**
 - [ ] L1: Can explain the difference between a coordinator and an executor agent
 - [ ] L1: Can explain why multi-agent systems are harder to test than single-agent systems
 - [ ] L2: Can explain which WOSRI agent is the orchestrator and which are executors
@@ -241,20 +163,22 @@ Design: the test dataset, the evaluation criteria, the edge cases, and the monit
 
 ---
 
-### Week 7: MCP Protocol
+## MONTH 2 — Agent Systems + RAG + Evaluation (Weeks 5–8)
+
+### Week 5: MCP Protocol
 
 | Element | Detail |
 |---------|--------|
 | **Course section** | Agentic Track: MCP (Model Context Protocol), servers, tool definitions |
 | **Watch speed** | 1x — new protocol, technically dense |
-| **Python exercise** | Week 7: Async concurrent API calls (5 parallel calls, measure time vs. sequential) |
+| **Python exercise** | Week 5: AgentTestCase dataclass with all fields |
 | **WOSRI task** | Find MCP-related code in `agai-api/`. Understand what tools are exposed. |
 | **Build** | Minimal MCP server: search_papers tool + normalise_entity tool, 2 test calls |
 | **Friday integration** | Write tool definition spec for the WOSRI NormalizerTool in MCP format |
 | **Milestone** | Can explain MCP to a colleague and explain how `agai-api` uses it |
 | **Stage 2 curriculum ref** | `stage_2_ai_systems/concepts.md` — tool protocols chapter |
 
-**Confidence Checklist — Week 7:**
+**Confidence Checklist — Week 5:**
 - [ ] L1: Can explain what MCP is and the problem it solves
 - [ ] L1: Can explain the difference between direct API calls and MCP-mediated tool calls
 - [ ] L2: Can find where MCP is used in `agai-api` and explain what it enables
@@ -264,20 +188,20 @@ Design: the test dataset, the evaluation criteria, the edge cases, and the monit
 
 ---
 
-### Week 8: Agent Evaluation — Formalise the DDA Framework
+### Week 6: Agent Evaluation — Formalise the DDA Framework
 
 | Element | Detail |
 |---------|--------|
 | **Course section** | Agentic Track: Agent evaluation, LLM-as-judge, test oracles, human-in-the-loop |
 | **Watch speed** | 1x — this is your core domain, maximum attention |
-| **Python exercise** | Week 8: pytest tests for PromptTemplate class |
+| **Python exercise** | Week 6: Error handling + retry logic (3 attempts, exponential backoff) |
 | **WOSRI task** | Assign formal evaluation categories to all 7 DDA findings: faithfulness, relevance, correctness, safety, format |
 | **Build** | LLM-as-judge prompt for Impact Agent. Test on 3 real DDA samples. |
 | **Friday integration** | Define: when should a DDA result require human review? Build decision criteria. |
 | **Milestone** | Can explain the DDA framework as a formal evaluation system with gaps identified |
 | **Stage 1 curriculum ref** | `stage_1_ai_validation/concepts.md` — evaluation chapter |
 
-**Confidence Checklist — Week 8:**
+**Confidence Checklist — Week 6:**
 - [ ] L1: Can explain LLM-as-judge: what it is, when to use it, when not to
 - [ ] L1: Can explain the 5 evaluation dimensions: faithfulness, relevance, correctness, safety, format
 - [ ] L2: Can classify all 7 DDA findings using formal evaluation vocabulary
@@ -285,7 +209,7 @@ Design: the test dataset, the evaluation criteria, the edge cases, and the monit
 - [ ] L3: Can explain what the DDA framework is missing and how to make it production-grade
 - [ ] L3: Can design an evaluation rubric for a new WOSRI agent from first principles
 
-**3-Level Scenario Questions — Week 8:**
+**3-Level Scenario Questions — Week 6:**
 
 *Level 1 — Conceptual:*
 "Explain LLM-as-judge. Why would you use an LLM to evaluate another LLM's output?
@@ -301,6 +225,83 @@ They're partially right. What is the actual limitation? How would you extend the
 an Emerging Ethics agent that identifies ethical concerns in research papers.
 There is no gold standard dataset. There is no baseline. How do you build an evaluation system
 for an agent whose 'correct' output is partly subjective? What are the philosophical tradeoffs?"
+
+---
+
+### Week 7: RAG Pipeline Architecture
+
+| Element | Detail |
+|---------|--------|
+| **Course section** | Core Track: RAG pipeline (retrieval → augmentation → generation) |
+| **Watch speed** | 1x — build the code example as you watch |
+| **Python exercise** | Week 7: Async concurrent API calls (5 parallel calls, measure time vs. sequential) |
+| **WOSRI task** | Trace the full RI Assistant query flow. Label each step R, A, or G. |
+| **Build** | Minimal RAG: 10 text "papers" → embed → store → query → generate answer |
+| **Friday integration** | Write 3 test cases targeting RAG failure modes: irrelevant retrieval, empty retrieval, conflicting docs |
+| **Milestone** | Can build a working (minimal) RAG system from scratch |
+| **Stage 2 curriculum ref** | `stage_2_ai_systems/concepts.md` — RAG chapter |
+
+**Confidence Checklist — Week 7:**
+- [ ] L1: Can explain RAG in one sentence (what it solves, how it works)
+- [ ] L1: Can explain why LLMs hallucinate less with RAG than without
+- [ ] L2: Can label every component of RI Assistant as R, A, or G
+- [ ] L2: Can write tests for all 3 RAG failure modes
+- [ ] L3: Can explain the tradeoffs of different chunking strategies for research paper indexing
+- [ ] L3: Can diagnose a "confidently wrong" RI Assistant answer at the RAG failure level
+
+**3-Level Scenario Questions — Week 7:**
+
+*Level 1 — Conceptual:*
+"Explain RAG to a non-technical product manager who wants to know why RI Assistant
+sometimes gives wrong answers even though it 'has access to the research database'."
+
+*Level 2 — Applied:*
+"The Funding Discovery agent is returning answers about author impact instead of funding.
+Is this a retrieval failure, an augmentation failure, or a generation failure? How do you tell?"
+
+*Level 3 — Systems/Expert:*
+"You are designing the test strategy for a RAG system that will index 50 million research papers.
+What are the 5 failure modes you must cover? For each: the test type, the expected behaviour,
+and what it would cost the user if it fails silently."
+
+---
+
+### Week 8: Prompting Techniques
+
+| Element | Detail |
+|---------|--------|
+| **Course section** | Core Track: Prompting (system prompts, few-shot, chain-of-thought, adversarial) |
+| **Watch speed** | 1.5x for concepts, 1x for code examples |
+| **Python exercise** | Week 8: pytest tests for PromptTemplate class |
+| **WOSRI task** | Locate the 4 WOSRI agent system prompts. Rate each on: role clarity, constraint specificity, output format guidance |
+| **Build** | 5 adversarial test queries designed to break each WOSRI agent out of scope |
+| **Friday integration** | Review `DDA prompt.txt` with new vocabulary. Document: what it does well, what it would change |
+| **Milestone** | Can review any system prompt and predict its failure modes |
+| **Stage 1 curriculum ref** | `stage_1_ai_validation/concepts.md` — prompting chapter |
+
+**Confidence Checklist — Week 8:**
+- [ ] L1: Can explain the difference between zero-shot, few-shot, and chain-of-thought prompting
+- [ ] L1: Can explain what prompt injection is and why it matters for AI testing
+- [ ] L2: Can review any WOSRI system prompt and identify its weaknesses
+- [ ] L2: Can write 5 adversarial inputs for any given agent scope
+- [ ] L3: Can design a prompt robustness test suite (scope violations, injection attempts, conflicting instructions)
+- [ ] L3: Can explain why the DDA prompt.txt works well and what structured prompt design principles it uses
+
+**3-Level Scenario Questions — Week 8:**
+
+*Level 1 — Conceptual:*
+"What is chain-of-thought prompting, and under what circumstances does it improve
+LLM output quality? When does it make things worse?"
+
+*Level 2 — Applied:*
+"A user discovers that if they include 'ignore your previous instructions' in a WOSRI query,
+the agent changes its behaviour. What happened? What test should have caught this?
+How would you fix it at the prompt level?"
+
+*Level 3 — Systems/Expert:*
+"You are designing a prompt robustness standard for all 4 WOSRI agents.
+Define: what does 'robust' mean for a production AI agent's system prompt?
+What are the 5 dimensions you would test? How would you score them?"
 
 ---
 
@@ -397,7 +398,7 @@ for an agent whose 'correct' output is partly subjective? What are the philosoph
 | 1 | **Ticket-to-Test Pipeline** | Wks 11–12 | Python authorship, prompt engineering, structured outputs |
 | 2 | **RAG over Workspace Docs** | Wks 7–9 | Embeddings, retrieval, LLM integration |
 | 3 | **DDA Dashboard** | Wk 11 | Data visualisation, web basics, monitoring concepts |
-| 4 | **Eval Notebook** | Wks 8–10 | DeepEval/RAGAS, evaluation framework literacy |
+| 4 | **Eval Notebook** | Wks 7–9 | DeepEval/RAGAS, evaluation framework literacy |
 
 Each project has a spec in `curriculum/projects/`.
 
@@ -409,14 +410,14 @@ Each project has a spec in `curriculum/projects/`.
 Month 1 milestones:
   [ ] Week 1: Can explain WOSRI token-level flow
   [ ] Week 2: Can explain how RI Assistant finds relevant papers
-  [ ] Week 3: Built a minimal working RAG system
-  [ ] Week 4: Can review any system prompt and predict its failure modes
+  [ ] Week 3: Can draw execution trace of any WOSRI agent with formal vocabulary
+  [ ] Week 4: Can explain WOSRI multi-agent architecture formally
 
 Month 2 milestones:
-  [ ] Week 5: Can draw execution trace of any WOSRI agent
-  [ ] Week 6: Can explain WOSRI multi-agent architecture formally
-  [ ] Week 7: Built a minimal MCP server
-  [ ] Week 8: DDA framework formalised with evaluation vocabulary
+  [ ] Week 5: Built a minimal MCP server
+  [ ] Week 6: DDA framework formalised with evaluation vocabulary
+  [ ] Week 7: Built a minimal working RAG system
+  [ ] Week 8: Can review any system prompt and predict its failure modes
 
 Month 3 milestones:
   [ ] Week 9: Can estimate WOSRI LLM costs from token counts
@@ -427,6 +428,7 @@ Month 3 milestones:
 
 ---
 
+*Revised: 2026-05-06 | Course sequence corrected — Agentic Track moved to Weeks 3–6, Core Track RAG/Prompting deferred to Weeks 7–8*
 *This schedule integrates with: WORK_INTEGRATION.md (daily tasks) | DAILY_TIMETABLE.md (session structure)*
 *Reference library: stage_0/ through stage_4/ curriculum files*
 *Source of truth for skill level: my_knowledge_map/honest_assessment.md*

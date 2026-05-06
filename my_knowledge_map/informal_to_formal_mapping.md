@@ -1,7 +1,31 @@
 # Informal-to-Formal Concept Mapping
 
-> **Generated:** 2026-04-29
+> **Generated:** 2026-04-29 | **Revised:** 2026-05-06
 > **Purpose:** Map every informal concept used in the workspace to its formal AI engineering name, assess knowledge maturity, and map to career credentials
+>
+> **IMPORTANT — Scope Note:** This mapping was originally generated from WOSRI workspace analysis only (last ~4 months).
+> It therefore misses 3 years of WOS work (2023–2025) which is the primary evidence for TypeScript, Playwright, BDD/Cucumber,
+> accessibility, CI/CD, and POM skills. See `honest_assessment.md v2` for the corrected full-picture skill assessment.
+>
+> **Correction applied here:**
+> - BDD/Cucumber and POM entries below now credit both WOSRI **and** 3 years of WOS output (80+ PRs, 6 E2E collections)
+> - A new Section 0 (Accessibility Testing) has been added — this was entirely missing from the original
+> - All other ratings from WOSRI remain unchanged
+
+---
+
+## 0. Accessibility Testing (WOS 2023–2025) — Missing from Original
+
+> This section was absent from the original mapping because it only examined the WOSRI workspace.
+> These skills were built over 3 years on `wos-e2e-smoketests` and `wos-nx-ui`.
+
+| Informal (Your Usage) | Formal Name | Definition | Evidence | Maturity | Credential |
+|---|---|---|---|---|---|
+| "accessibility tests" / axe-core scans | **Automated Accessibility Testing (WCAG)** | Using tools like Playwright-axe or axe-core to detect WCAG violations automatically | `wos-e2e-smoketests` WPP accessibility suite — built from scratch | **Practitioner** — built the suite, knows violations by WCAG criterion number | ISTQB, CPACC |
+| "WCAG fix" | **Web Content Accessibility Guidelines (WCAG) 2.1 Remediation** | Correcting code violations against specific WCAG success criteria | 9 production fixes in `wos-nx-ui` Angular/CSS — WOSAR tickets with real commit history | **Practitioner** — authored production code fixes, not just test code | CPACC, CPWA |
+| "accessibility nightly build" | **Continuous Accessibility Testing / Automated Compliance Gate** | Scheduled CI/CD pipeline running accessibility validation on every build | Jenkins pipeline configured from scratch; failed builds trigger team alerts | **Practitioner** — designed and configured the pipeline end-to-end | ISTQB, DevOps certs |
+| "WOSAR tickets" | **Accessibility Defect Taxonomy / Compliance Incident Management** | Tracking accessibility violations as production defects with severity classification | WOSAR-prefixed Jira tickets for each WCAG fix | **Practitioner** — raises, tracks, and closes accessibility defects | — |
+| "2.4.4" / "4.1.2" / "1.3.1" | **WCAG Success Criteria** | The specific numbered requirements in WCAG 2.1 that define what is accessible | User knows criteria numbers from 3 years of remediation work | **Practitioner** — cites WCAG criteria by number in ticket descriptions | CPACC |
 
 ---
 
@@ -23,8 +47,8 @@
 | "HTML report" | **Test Reporting / Test Evidence Artifact** | Generated reports showing pass/fail, scores, response details | `reporters/html_reporter.py`, GitHub Pages publication | **Practitioner** | — |
 | "guardrail tests" | **Safety Evaluation / Guardrail Validation** | Tests verifying agent refuses off-topic, harmful, or out-of-scope requests | `AGAI_3633_3396_guardrails.yaml` | **Practitioner** — but scored 53% (agent not reliably refusing) | AI Safety cert |
 | "BFF adapter" / "legacy adapter" | **Test Adapter Pattern / Integration Level Selection** | Configurable adapter choosing between direct API and BFF-routed testing | `runners/bff_adapter.py`, `runners/legacy_adapter.py`, `--use-bff` | **Practitioner** | — |
-| "Cucumber feature file" | **Behavior-Driven Development (BDD) Specification** | Gherkin-syntax specification connecting business requirements to test code | All `.feature` files in `research-intelligence-ui-tests/` and `core-api-it-tests/` | **Practitioner** | ISTQB BDD |
-| "page locator" | **Page Object Model (POM)** | Centralized locator management for UI test automation | `WOSRI_RI_Assistant_Page.ts` | **Practitioner** | ISTQB Advanced Test Automation |
+| "Cucumber feature file" | **Behavior-Driven Development (BDD) Specification** | Gherkin-syntax specification connecting business requirements to test code | **WOS (primary):** Hundreds of feature files authored over 3 years across `wos-e2e-smoketests`, `wos-restapi-automation` — 6 full E2E collections, scenario outlines, backgrounds, tag strategies. **WOSRI:** all `.feature` files in `research-intelligence-ui-tests/` and `core-api-it-tests/` | **Practitioner (4/5)** — independent authorship across 3 years | ISTQB BDD |
+| "page locator" | **Page Object Model (POM)** | Centralized locator management for UI test automation | **WOS (primary):** 3 years maintaining and refactoring page objects across `wos-e2e-smoketests` — standardised locator naming conventions across the entire suite. **WOSRI:** `WOSRI_RI_Assistant_Page.ts` | **Practitioner (4/5)** — 3 years independent POM authorship and refactoring | ISTQB Advanced Test Automation |
 | "contract test" | **Consumer-Driven Contract Test** | API schema and behavior validation at the integration boundary | `RI_Assistant_BFF_API.feature` — WebSocket schema, REST endpoints | **Practitioner** | ISTQB API Testing |
 
 ---
@@ -106,4 +130,5 @@
 
 ---
 
-*This mapping connects informal workspace terminology to formal AI engineering vocabulary. Maturity assessments are based on evidence from actual workspace artifacts.*
+*Revised: 2026-05-06 | Added Section 0 (Accessibility Testing — WOS 2023–2025), corrected BDD/Cucumber and POM entries to credit primary WOS evidence, added scope note.*
+*Original: 2026-04-29 | This mapping connects informal workspace terminology to formal AI engineering vocabulary. Maturity assessments are based on evidence from actual workspace artifacts.*

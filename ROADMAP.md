@@ -2,9 +2,14 @@
 
 > **Start here. Return here daily.** This is your navigation document for the entire curriculum.
 >
-> **You:** SDET-level engineer with Python, TypeScript, Playwright, pytest, FastAPI, and LLM agent testing experience.
-> **Goal:** AI Validation Engineer -> AI Systems Engineer -> Full AI Engineer (evaluation & safety).
-> **Time budget:** ~10-12 hrs/week | ~44-48 hrs total over 30 days.
+> **NOTE (2026-05-06):** This is the original 30-day sprint plan. The active schedule is now the
+> 3-month master plan at `3_month_master_plan/MASTER_CURRICULUM.md`. These stage files remain
+> your deep-reference library — use them for concepts and exercises, not as a day-by-day schedule.
+>
+> **You:** QA Engineer with 3 years TypeScript/Playwright + accessibility automation (WOS, 2023–2025),
+> 4 months functional QA on production AI agents (WOSRI). Python is the primary skill gap.
+> **Goal:** AI Validation Engineer → AI Systems Engineer → Full AI Engineer (evaluation & safety).
+> **Active time budget:** 17 hrs/week × 12 weeks = 204 hrs (see 3-month master plan).
 
 ---
 

@@ -103,49 +103,7 @@ If you can do all 4 steps, you understood it well enough to apply it.
 
 ---
 
-### WEEK 3 — RAG Pipeline → RI Assistant Full Flow
-
-**Concept:** Retrieval-Augmented Generation — the architecture behind every answer RI Assistant gives
-
-| Day | Study | Work Integration Task |
-|-----|-------|----------------------|
-| **Mon** | Core Track: RAG pipeline architecture (retrieval → augmentation → generation) | Trace: map the full RI Assistant query flow using `RI_ASSISTANT_WORKSPACE_MAP.md`. Label each step as Retrieval, Augmentation, or Generation. |
-| **Tue** | Core Track: Chunking strategies and document indexing | Investigate: how are research papers chunked and indexed in WOSRI's vector store? What chunk size is used? Does it matter for your test results? |
-| **Wed** | Python: Week 3 exercises (HTTP API call) | Apply Python: write a script that sends a test query directly to the conductor API (bypassing the UI) and logs the raw response |
-| **Thu** | Core Track: Retrieval quality and relevance scoring | Write test cases targeting retrieval quality: "query about funding should return funding-related papers, not author impact papers" |
-| **Fri** | Review + Obsidian | Obsidian entry: diagram the RAG pipeline for one specific WOSRI agent. Which step is most likely to fail? |
-| **Sat** | Deep dive: build a minimal RAG from scratch | Use a sample set of 10 "research papers" (text files you create). Build: embed them, store them, query them, generate an answer. This demystifies what WOSRI does. |
-| **Sun** | Work application: write 3 tests targeting RAG failure modes | Failure modes to test: irrelevant retrieval, no retrieval (empty corpus), conflicting retrieved documents |
-
-**Confidence check by end of Week 3:**
-- [ ] Can explain why RI Assistant sometimes gives confident but wrong answers (retrieval failure → hallucination)
-- [ ] Can explain what "grounding" means and why it matters for research intelligence
-- [ ] Can design a test suite that covers all 3 RAG failure modes
-
----
-
-### WEEK 4 — Prompting Techniques → WOSRI Agent Prompt Analysis
-
-**Concept:** System prompts, few-shot examples, chain-of-thought, prompt engineering patterns
-
-| Day | Study | Work Integration Task |
-|-----|-------|----------------------|
-| **Mon** | Core Track: System prompts and their role in agent behaviour | Find: locate the system prompts used by each of the 4 WOSRI agents in the conductor. What role does each one define? |
-| **Tue** | Core Track: Few-shot prompting and chain-of-thought | Analyse: do the WOSRI agent prompts use few-shot examples? Should they? Write a test that validates the agent follows its system prompt correctly. |
-| **Wed** | Python: Week 4 exercises (prompt template system) | Apply Python: build a PromptTemplate class that can render any of the 4 WOSRI system prompts with variable substitution |
-| **Thu** | Core Track: Prompt injection and adversarial inputs | Security testing: write 5 adversarial test queries designed to make the WOSRI agents ignore their system prompts or behave outside their intended scope |
-| **Fri** | Review + Obsidian | Obsidian entry: rate the 4 WOSRI system prompts (if accessible) on: clarity, role definition, constraint specificity, output format guidance |
-| **Sat** | Deep dive: prompt engineering section at 1x, apply to your DDA prompt | Review your own `DDA prompt.txt` using what you've learned. What would you change? Document the improvements. |
-| **Sun** | Work application: rewrite 2 weak test cases using prompt engineering insights | Which of your existing Cucumber test cases would be stronger if they included adversarial inputs or edge case prompts? |
-
-**Confidence check by end of Week 4:**
-- [ ] Can review a system prompt and identify: what it will do well, what it will do badly, what adversarial input could break it
-- [ ] Can explain why the Emerging Topics agent sometimes goes off-topic (likely a prompt scope issue)
-- [ ] Can write a structured system prompt for a new agent from scratch
-
----
-
-### WEEK 5 — Agent Basics → WOSRI Conductor Architecture
+### WEEK 3 — Agent Architecture → WOSRI Conductor Architecture
 
 **Concept:** Agent loops, tool calling, ReAct pattern, agent decision making
 
@@ -153,20 +111,20 @@ If you can do all 4 steps, you understood it well enough to apply it.
 |-----|-------|----------------------|
 | **Mon** | Agentic Track: What an agent is vs. a simple LLM call | Map: open `wos-ri-conductor/app/conductor/conductor.py`. Identify: where is the agent loop? Where does the conductor decide which tool to call next? |
 | **Tue** | Agentic Track: Tool calling (function calling) in detail | Catalogue: list every tool in the WOSRI conductor. For each tool: what does it do, what can go wrong, what does a test for it look like? |
-| **Wed** | Python: Week 5 exercises (AgentTestCase dataclass) | Apply Python: build the `AgentTestCase` dataclass modelled on WOSRI's actual test structure |
+| **Wed** | Python: Week 3 exercises (LLM API call) | Apply Python: write a script that calls the conductor API directly (bypassing the UI), send a test query, print response + token count + time |
 | **Thu** | Agentic Track: ReAct pattern (Reason + Act loops) | Trace: for a sample Impact Agent query, trace the full ReAct loop. Reason: what does the agent think? Act: what tool does it call? Observe: what does it get back? |
 | **Fri** | Review + Obsidian | Obsidian entry: document one full agent execution trace with file references for every step |
 | **Sat** | Deep dive: build a minimal tool-calling agent | Build an agent that has 3 tools: search, calculate, format. Give it a task. Watch how it decides which tool to use. |
 | **Sun** | Work application: improve 3 WOSRI test cases using agent loop knowledge | Which test cases currently only test the final output? Add intermediate checks: did the agent call the right tool? In the right order? |
 
-**Confidence check by end of Week 5:**
+**Confidence check by end of Week 3:**
 - [ ] Can draw the execution trace of any WOSRI agent query from input to output
 - [ ] Can explain what happens when the AppSelectorTool selects the wrong agent
 - [ ] Can design tests that validate tool selection, not just final output
 
 ---
 
-### WEEK 6 — Multi-Agent Systems → WOSRI 4-Agent Coordination
+### WEEK 4 — Multi-Agent Systems → WOSRI 4-Agent Coordination
 
 **Concept:** Agent orchestration, handoffs, parallel execution, shared state
 
@@ -174,20 +132,20 @@ If you can do all 4 steps, you understood it well enough to apply it.
 |-----|-------|----------------------|
 | **Mon** | Agentic Track: Multi-agent coordination patterns | Map: how does the WOSRI conductor decide between the 4 agents? Is this sequential, parallel, or conditional routing? |
 | **Tue** | Agentic Track: Agent handoffs and shared state | Test: write a test case that requires handoff between agents — a query that involves both Impact (author performance) and Collaboration (co-authorship). What should happen? What actually happens? |
-| **Wed** | Python: Week 6 exercises (error handling + retry logic) | Apply Python: add retry logic to your API caller from Week 3. Simulate a flaky agent response. |
+| **Wed** | Python: Week 4 exercises (PromptTemplate class) | Apply Python: build a PromptTemplate class that can render any of the 4 WOSRI system prompts with variable substitution |
 | **Thu** | Agentic Track: Failure modes in multi-agent systems | Failure catalogue: for each of the 4 WOSRI agents, identify: what is the most common failure mode you've seen in 4 months? Now name it formally using agent vocabulary. |
 | **Fri** | Review + Obsidian | Obsidian entry: the 4 WOSRI agents as a formal multi-agent system. Diagram: which agent is the orchestrator? Which are the executors? |
 | **Sat** | Deep dive: build a minimal multi-agent system (2 agents + orchestrator) | Build an orchestrator that routes a query to either Agent A (data lookup) or Agent B (analysis), based on the query type. |
 | **Sun** | Work application: design a cross-agent test suite | Write 5 test cases that test agent routing correctness, not just individual agent output quality |
 
-**Confidence check by end of Week 6:**
+**Confidence check by end of Week 4:**
 - [ ] Can explain how the conductor decides which of the 4 agents handles a query
 - [ ] Can identify when a WOSRI failure is a routing failure vs. an agent execution failure
 - [ ] Can design a test suite that covers agent orchestration, not just agent output
 
 ---
 
-### WEEK 7 — MCP Protocol → WOSRI External Tool Connectivity
+### WEEK 5 — MCP Protocol → WOSRI External Tool Connectivity
 
 **Concept:** Model Context Protocol, MCP servers, tool definitions, context injection
 
@@ -195,20 +153,20 @@ If you can do all 4 steps, you understood it well enough to apply it.
 |-----|-------|----------------------|
 | **Mon** | Agentic Track: What MCP is and why Anthropic created it | Find: open `agai-api/api/`. Does WOSRI already use MCP? What external tools are connected through it? |
 | **Tue** | Agentic Track: MCP server and client architecture | Map: if WOSRI exposed a new data source (e.g., grant databases) via MCP, where would the change be made? Which tests would need updating? |
-| **Wed** | Python: Week 7 exercises (async concurrent API calls) | Apply Python: make 4 concurrent calls to 4 different agent APIs and measure the response time difference vs sequential |
+| **Wed** | Python: Week 5 exercises (AgentTestCase dataclass) | Apply Python: build the `AgentTestCase` dataclass modelled on WOSRI's actual test structure |
 | **Thu** | Agentic Track: Writing tool definitions for MCP | Write: define an MCP tool specification for the WOSRI NormalizerTool. What are its inputs, outputs, and error cases? |
 | **Fri** | Review + Obsidian | Obsidian entry: MCP as an architectural pattern. How does it compare to how WOSRI currently connects tools? |
 | **Sat** | Deep dive: build a minimal MCP server with 2 tools | Use the MCP Python SDK. Build a server with a search_papers tool and a normalise_entity tool. Test it. |
 | **Sun** | Work application: write MCP-aware test cases | How would your existing WOSRI tests need to change if external tools were exposed via MCP instead of direct HTTP calls? |
 
-**Confidence check by end of Week 7:**
+**Confidence check by end of Week 5:**
 - [ ] Can explain what MCP is to a non-technical colleague in 60 seconds
 - [ ] Can explain why MCP exists instead of just using direct API calls
 - [ ] Can write a tool definition specification for any WOSRI tool
 
 ---
 
-### WEEK 8 — Agent Evaluation → DDA Framework Formalisation
+### WEEK 6 — Agent Evaluation → DDA Framework Formalisation
 
 **Concept:** LLM-as-judge, evaluation metrics, test oracles, failure classification
 
@@ -216,16 +174,58 @@ If you can do all 4 steps, you understood it well enough to apply it.
 |-----|-------|----------------------|
 | **Mon** | Agentic Track: Agent evaluation patterns and test oracles | Review: open your DDA validation report. For each of the 7 findings, assign a formal evaluation category: faithfulness, relevance, correctness, safety, format. |
 | **Tue** | Agentic Track: LLM-as-judge pattern | Build: write a simple LLM-as-judge prompt that evaluates an Impact Agent response. Input: query + response. Output: score 1–5 + reasoning. Test it on 3 real DDA samples. |
-| **Wed** | Python: Week 8 exercises (pytest for PromptTemplate) | Apply Python: write pytest tests for the DDA framework's comparison logic |
+| **Wed** | Python: Week 6 exercises (error handling + retry) | Apply Python: upgrade your Week 3 API caller — retry 3 times on failure with exponential backoff, log every attempt |
 | **Thu** | Agentic Track: Human-in-the-loop evaluation | Document: in the DDA framework, when should a human review be required? Build the decision criteria as a flowchart. |
 | **Fri** | Review + Obsidian | Obsidian entry: the DDA framework as a formal evaluation system. What category of evaluation framework is it? What is missing? |
 | **Sat** | Deep dive: implement DeepEval for 3 WOSRI test cases | Use DeepEval (from Stage 1 curriculum). Run faithfulness, answer relevancy, and hallucination metrics on 3 real agent responses. |
 | **Sun** | Work application: extend the DDA framework | Add one new evaluation dimension to the framework that wasn't there before. Write the prompt, add the check, run it. |
 
-**Confidence check by end of Week 8:**
+**Confidence check by end of Week 6:**
 - [ ] Can explain the difference between deterministic tests (exact match) and LLM-judge tests (semantic evaluation)
 - [ ] Can design a complete evaluation rubric for any of the 4 WOSRI agents
 - [ ] Can explain why the DDA framework alone is insufficient and what it needs to be complete
+
+---
+
+### WEEK 7 — RAG Pipeline → RI Assistant Full Flow
+
+**Concept:** Retrieval-Augmented Generation — the architecture behind every answer RI Assistant gives
+
+| Day | Study | Work Integration Task |
+|-----|-------|----------------------|
+| **Mon** | Core Track: RAG pipeline architecture (retrieval → augmentation → generation) | Trace: map the full RI Assistant query flow using `RI_ASSISTANT_WORKSPACE_MAP.md`. Label each step as Retrieval, Augmentation, or Generation. |
+| **Tue** | Core Track: Chunking strategies and document indexing | Investigate: how are research papers chunked and indexed in WOSRI's vector store? What chunk size is used? Does it matter for your test results? |
+| **Wed** | Python: Week 7 exercises (async concurrent API calls) | Apply Python: make 5 concurrent LLM API calls with the same prompt; measure response time vs sequential. Compare the 5 responses — this demonstrates non-determinism. |
+| **Thu** | Core Track: Retrieval quality and relevance scoring | Write test cases targeting retrieval quality: "query about funding should return funding-related papers, not author impact papers" |
+| **Fri** | Review + Obsidian | Obsidian entry: diagram the RAG pipeline for one specific WOSRI agent. Which step is most likely to fail? |
+| **Sat** | Deep dive: build a minimal RAG from scratch | Use a sample set of 10 "research papers" (text files you create). Build: embed them, store them, query them, generate an answer. This demystifies what WOSRI does. |
+| **Sun** | Work application: write 3 tests targeting RAG failure modes | Failure modes to test: irrelevant retrieval, no retrieval (empty corpus), conflicting retrieved documents |
+
+**Confidence check by end of Week 7:**
+- [ ] Can explain why RI Assistant sometimes gives confident but wrong answers (retrieval failure → hallucination)
+- [ ] Can explain what "grounding" means and why it matters for research intelligence
+- [ ] Can design a test suite that covers all 3 RAG failure modes
+
+---
+
+### WEEK 8 — Prompting Techniques → WOSRI Agent Prompt Analysis
+
+**Concept:** System prompts, few-shot examples, chain-of-thought, prompt engineering patterns
+
+| Day | Study | Work Integration Task |
+|-----|-------|----------------------|
+| **Mon** | Core Track: System prompts and their role in agent behaviour | Find: locate the system prompts used by each of the 4 WOSRI agents in the conductor. What role does each one define? |
+| **Tue** | Core Track: Few-shot prompting and chain-of-thought | Analyse: do the WOSRI agent prompts use few-shot examples? Should they? Write a test that validates the agent follows its system prompt correctly. |
+| **Wed** | Python: Week 8 exercises (pytest) | Apply Python: write pytest tests for the DDA framework's comparison logic |
+| **Thu** | Core Track: Prompt injection and adversarial inputs | Security testing: write 5 adversarial test queries designed to make the WOSRI agents ignore their system prompts or behave outside their intended scope |
+| **Fri** | Review + Obsidian | Obsidian entry: rate the 4 WOSRI system prompts (if accessible) on: clarity, role definition, constraint specificity, output format guidance |
+| **Sat** | Deep dive: prompt engineering section at 1x, apply to your DDA prompt | Review your own `DDA prompt.txt` using what you've learned. What would you change? Document the improvements. |
+| **Sun** | Work application: rewrite 2 weak test cases using prompt engineering insights | Which of your existing Cucumber test cases would be stronger if they included adversarial inputs or edge case prompts? |
+
+**Confidence check by end of Week 8:**
+- [ ] Can review a system prompt and identify: what it will do well, what it will do badly, what adversarial input could break it
+- [ ] Can explain why the Emerging Topics agent sometimes goes off-topic (likely a prompt scope issue)
+- [ ] Can write a structured system prompt for a new agent from scratch
 
 ---
 
@@ -347,6 +347,7 @@ The person who can see from both angles is the person who gets promoted.
 
 ---
 
+*Revised: 2026-05-06 | Weeks 3–8 reordered — Agentic Track moved to Weeks 3–6, Core Track RAG/Prompting to Weeks 7–8*
 *WOSRI Architecture ref: RI_ASSISTANT_WORKSPACE_MAP.md*
 *Honest Assessment ref: curriculum/my_knowledge_map/honest_assessment.md*
 *DDA Framework ref: platform-agent-testing/dda_framework/*

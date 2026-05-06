@@ -1,203 +1,180 @@
+---
+tags: [gap-analysis, skills, career, updated]
+generated: 2026-04-29
+revised: 2026-05-06
+source: honest_assessment.md v2 + impact reports 2023-2025 + 3-month master plan
+---
+
 # Skill Gap Report — AI Engineering Career Progression
 
-> **Generated:** 2026-04-29
-> **Subject:** SDET → AI Validation Engineer → AI Systems Engineer → Full AI Engineer
-> **Time Budget:** 1 month, ~10-12 hrs/week (~44 hours total)
-> **Workspace:** C:\WOSRI-Workspace (16 repos)
+> **Revision notice (2026-05-06):** This report was originally generated on 2026-04-29
+> based on WOSRI context only. It has been fully rewritten to reflect:
+> 1. Three years of WOS work (2023–2025) that was absent from the original
+> 2. The corrected skill ratings in `honest_assessment.md` v2
+> 3. The 3-month master plan (not the original 1-month sprint)
+>
+> The original report listed Python as "STRONG — table stakes" and TypeScript as
+> a practitioner skill based on wrong evidence. Both have been corrected.
+>
+> **Primary source of truth:** `my_knowledge_map/honest_assessment.md`
+> **Active learning plan:** `3_month_master_plan/MASTER_CURRICULUM.md`
 
 ---
 
-## Section 1: What You Already Know (Formal Names + Evidence)
+## Section 1: What You Already Know (Honest Ratings + Evidence)
 
-These are skills where you are at **Practitioner level** — you have built, debugged, and shipped artifacts.
+These are skills where evidence exists from actual work output.
 
-| # | Formal Skill Name | Proficiency | Evidence |
-|---|---|---|---|
-| 1 | **LLM-as-Judge Evaluation** | Advanced | `--enable-llm-judge` flag; LLM judge results in QA_TESTING_REPORT.md across 13 tickets; understands blind spots (clvt-hide) |
-| 2 | **Gold Standard Dataset Curation** | Advanced | `Impact Assistant Gold Questions 2026.xlsx`, `gold_questions.yaml`, `gold_questions_long_chats.yaml`, `gold_questions_filters_indicators.yaml` |
-| 3 | **Continuous/Fractional Evaluation Metrics** | Advanced | Implemented PASS ≥ 0.85 / PARTIAL 0.60–0.84 / FAIL < 0.60 system; `fractional_score_demo.yaml`; `--streamlined` |
-| 4 | **Declarative Test DSL Design (YAML)** | Advanced | Authored 60+ YAML test files with `agent_must`, `regex_checks`, `llm_validation`, `conversation`, `depends_on`, `tags` |
-| 5 | **Multi-Turn Conversational Evaluation** | Advanced | `conversation:` blocks, `gold_questions_long_chats.yaml`, query correction tests (AGAI-3688) |
-| 6 | **Hybrid Evaluation (Semantic + Structural)** | Advanced | Combines `agent_must` (LLM judge) + `regex_checks` (pattern match) + `llm_validation.criteria` in single tests |
-| 7 | **Multi-Agent Pipeline Testing** | Advanced | Tests agent 20/30/40/90 independently and end-to-end; router validation; tool invocation checks (22 tests for AGAI-3783) |
-| 8 | **Safety/Guardrail Evaluation** | Intermediate | `AGAI_3633_3396_guardrails.yaml` — authored tests, identified agent deficiencies (53% pass rate) |
-| 9 | **BDD / Cucumber / Gherkin** | Advanced | Feature files across 2 repos (UI + API), established tag conventions, background patterns |
-| 10 | **Page Object Model (Playwright)** | Advanced | `WOSRI_RI_Assistant_Page.ts` locator centralization |
-| 11 | **API Contract Testing (REST-Assured)** | Advanced | 7 feature files covering WebSocket, REST CRUD, filters, error cases |
-| 12 | **Context Engineering** | Advanced | Authored `RI_ASSISTANT_WORKSPACE_MAP.md`, `Agai_testing_Skill.md`, `Ui_Test_Gen_Skill.md`, `prompts/` library |
-| 13 | **Knowledge Graph Construction** | Intermediate | `graphify/` → 20,886 nodes, 52,533 edges, 1,624 communities; interprets graph output for architecture discovery |
-| 14 | **Test Infrastructure (CI/Reporting)** | Advanced | GitHub Pages test dashboard, HTML reporter, GitHub Actions triggers |
-| 15 | **Prompt Engineering** | Intermediate-Advanced | `agent_must` rubric design, prompt library, DDA prompt, evaluation prompt patterns |
-| 16 | **Test Pyramid Architecture (5-Layer)** | Advanced | Designed and operates: unit → conductor YAML → API contract → E2E Playwright → platform agent |
+| # | Skill | Rating | Evidence |
+|---|-------|--------|---------|
+| 1 | **E2E Test Automation (Playwright + Cucumber)** | 4/5 | 3 years, `wos-e2e-smoketests`, 6 collections built from zero, 80+ PRs |
+| 2 | **BDD / Gherkin / Cucumber authorship** | 4/5 | Hundreds of feature files authored independently across 3 repos |
+| 3 | **Accessibility testing (WCAG)** | 4/5 | 9 WCAG violations fixed in production Angular/CSS; nightly build configured; WPP suite built from scratch |
+| 4 | **Page Object Model** | 4/5 | Full locator standardisation across `wos-e2e-smoketests` page objects — user's own work |
+| 5 | **Manual AI agent testing** | 4/5 | 4 months, 4 WOSRI agents (Impact, Collaboration, Funding, Emerging Topics) |
+| 6 | **LLM non-determinism (understanding)** | 4/5 | DDA findings 1 & 5 — correct distinction between reproducible bugs and LLM variance |
+| 7 | **AI-assisted system design** | 4/5 | Playwright Agents POC (3-agent architecture), DDA framework (222-line prompt), Copilot Healer |
+| 8 | **CI/CD (configuration)** | 3.5/5 | Accessibility Nightly Build set up; Jenkins hang fixed; error handling added; email routing configured |
+| 9 | **Git** | 3.5/5 | 80+ PRs merged across 3 repos over 3 years |
+| 10 | **Functional QA / ticket execution** | 4.5/5 | 3 years WOS + 4 months WOSRI — consistent ticket-to-done workflow across both products |
+| 11 | **TypeScript** | 3.5/5 | 3 years independent Playwright authorship; CSS/Angular fixes shipped to production |
+| 12 | **Structured prompt design** | 3.5/5 | `DDA prompt.txt` — 222 lines, role/tasks/constraints/format. Above-average prompt engineering. |
+| 13 | **Context provision for AI tools** | 3.5/5 | `RI_ASSISTANT_WORKSPACE_MAP.md`, skill files, prompt library, DDA framework context |
+| 14 | **Documentation** | 3.5/5 | Impact reports, workspace map, DDA prompt, architecture comparisons, Jira tickets |
+| 15 | **Exploratory testing of AI systems** | 3.5/5 | 4 months of WOSRI agent failure pattern knowledge |
+| 16 | **REST API testing** | 2.5/5 | ListBLC API automation built from scratch; delete search history bug fixed |
 
-**Total Practitioner-level skills: 16**
-
----
-
-## Section 2: What You Partially Know (Touched but Not Deep)
-
-These are skills at **User** or **Intermediate** level — you've used them but haven't built them from scratch.
-
-| # | Formal Skill Name | Current Level | What You've Done | What's Missing |
-|---|---|---|---|---|
-| 1 | **Entity Resolution / Entity Linking** | User | Tests normalizer outputs, understands candidate retrieval → LLM reranking pipeline | Haven't implemented a normalizer, don't know embedding model selection, similarity thresholds |
-| 2 | **Structured Output / Constrained Decoding** | User | Tests AppSelectorTool structured outputs | Haven't defined JSON schemas for LLM output, don't understand Pydantic ↔ LLM schema enforcement internals |
-| 3 | **Vector Similarity Search** | Awareness | Knows normalizer uses embeddings for candidate retrieval | Haven't implemented RAG, don't know embedding model choices, distance metrics, indexing strategies |
-| 4 | **Agent Orchestration Implementation** | User | Tests conductor thoroughly, reads conductor code | Haven't built an orchestrator from scratch — doesn't know LangGraph, CrewAI, Autogen internals |
-| 5 | **LLM API Configuration** | User | Calls AGAI API with agent names, understands temperature/seed conceptually | Hasn't tuned temperature, top_p, frequency_penalty; hasn't compared model behaviors |
-| 6 | **SSE/WebSocket Streaming** | User | Tests against streaming endpoints | Hasn't implemented streaming server-side |
-| 7 | **NgRx / Redux State Management** | User | Reads store shape, understands actions/effects | Hasn't authored reducers or effects |
-| 8 | **Docker / Container Deployment** | Awareness | Reads ECS/Terraform docs in normalizer repo | Hasn't built Dockerfiles, managed ECS services |
-| 9 | **Observability / Monitoring** | Awareness | Sees Datadog references in normalizer README | Hasn't set up dashboards, alerts, tracing for LLM systems |
-| 10 | **Model Context Protocol (MCP)** | Awareness | Knows agai-api has MCP server management | Hasn't configured MCP servers or tools |
+**Total: 16 skills with evidence. Python and formal AI evaluation frameworks are the primary gaps.**
 
 ---
 
-## Section 3: What You Need to Learn (By Role Target Stage)
+## Section 2: What You Partially Know (Real Gaps)
 
-### Stage 1: AI QA / Validation Engineer (Agentic Systems) — 0-2 months
-
-*These close the gap between "SDET who tests AI" and "recognized AI Validation Engineer."*
-
-| # | Skill | Priority | Why | How to Learn | Hours |
-|---|---|---|---|---|---|
-| 1 | **Formal Evaluation Frameworks (RAGAS, DeepEval, TruLens)** | HIGH | Your custom YAML framework is solid but industry uses standard frameworks; knowing them makes you credible in interviews | DeepEval docs + apply to your gold questions | 4 |
-| 2 | **Statistical Evaluation Methods** | HIGH | You use thresholds (0.85/0.60) but lack statistical rigor: confidence intervals, inter-rater reliability (Cohen's kappa), significance testing | "LLM Evaluation" section of Chip Huyen's book + apply to your test results | 4 |
-| 3 | **Taxonomy of LLM Failures** | MEDIUM | You find failures but lack formal taxonomy: hallucination types, faithfulness, relevance, coherence, toxicity | HELM benchmark paper + create failure taxonomy for your agents | 3 |
-| 4 | **Red Teaming / Adversarial Evaluation** | MEDIUM | Your guardrail tests are basic; formal red teaming is a career differentiator | Anthropic red team guide + apply to RI Assistant | 3 |
-| 5 | **Evaluation Dataset Design** | MEDIUM | Your gold questions are good but not formally stratified by difficulty, entity type, edge case coverage | Academic eval dataset papers + formalize your gold set | 2 |
-
-**Stage 1 Total: ~16 hours**
-
-### Stage 2: AI Systems Engineer — 2-4 months
-
-*These close the gap between "tests agent systems" and "builds agent systems."*
-
-| # | Skill | Priority | Why | How to Learn | Hours |
-|---|---|---|---|---|---|
-| 6 | **Agent Orchestration Frameworks (LangGraph, CrewAI)** | HIGH | You test conductor but can't build one; LangGraph is the industry standard | LangGraph tutorial → build a mini-conductor for a personal project | 8 |
-| 7 | **RAG Pipeline Implementation** | HIGH | Vector search + retrieval + generation is core to AI engineering; you only have awareness | LangChain RAG tutorial → build RAG over your workspace docs | 6 |
-| 8 | **Structured Outputs / Function Calling (OpenAI API)** | HIGH | You test structured outputs but haven't defined schemas; critical for tool-use agents | OpenAI function calling docs → implement 3 tool-use patterns | 4 |
-| 9 | **Prompt Optimization / DSPy** | MEDIUM | You write prompts intuitively; DSPy/OPRO automate prompt optimization | DSPy tutorial → optimize one of your agent_must evaluation prompts | 4 |
-| 10 | **LLMOps / Experiment Tracking** | MEDIUM | You lack MLflow/W&B tracking for LLM experiments; needed for systematic improvement | W&B LLM course (free) → track your agent test results | 4 |
-| 11 | **Observability for LLM Systems** | MEDIUM | LangSmith, Datadog LLM monitoring — debugging agent failures at scale | LangSmith quickstart → instrument your test framework | 3 |
-
-**Stage 2 Total: ~29 hours**
-
-### Stage 3: Full AI Engineer (Evaluation & Safety Specialization) — 4-8 months
-
-*These are longer-term investments for senior/staff-level positioning.*
-
-| # | Skill | Priority | Why | How to Learn | Hours |
-|---|---|---|---|---|---|
-| 12 | **Fine-Tuning LLMs** | MEDIUM | Understanding fine-tuning informs evaluation design | HuggingFace fine-tuning tutorial → fine-tune a small model for entity classification | 10 |
-| 13 | **RLHF / RLAIF Concepts** | MEDIUM | AI safety/alignment fundamentals; differentiator for evaluation specialist | Anthropic's Constitutional AI paper + RLHF explainer | 4 |
-| 14 | **AI Safety Frameworks (NIST AI RMF, EU AI Act)** | MEDIUM | Compliance knowledge for enterprise AI validation | NIST AI RMF playbook → map to your testing practices | 4 |
-| 15 | **Embedding Models & Vector Databases** | LOW-MEDIUM | Deeper RAG expertise | Pinecone/Weaviate docs → implement entity search for normalizer-like use case | 6 |
-| 16 | **Distributed ML Systems (Ray, Kubernetes)** | LOW | Infrastructure understanding for scaling AI systems | Ray tutorial (your agai-api already uses it) | 4 |
-| 17 | **Model Evaluation at Scale (HELM, BigBench)** | LOW | Academic evaluation methodology for large-scale benchmarking | Read HELM paper + apply 3 metrics to your agents | 3 |
-
-**Stage 3 Total: ~31 hours**
+| # | Skill | Current Level | What You've Done | What's Missing |
+|---|-------|--------------|-----------------|----------------|
+| 1 | **Python** | 1.5/5 | Reads AI-generated Python, directed DDA framework build | Cannot author Python scripts independently. All DDA code was AI-generated. WOS work was TypeScript. **This is the #1 gap.** |
+| 2 | **Formal LLM Evaluation Frameworks** | 1.5/5 | Built DDA (custom), aware of DeepEval/RAGAS names | Has not installed or run DeepEval, RAGAS, or TruLens |
+| 3 | **Agent orchestration (implementation)** | 2/5 | Tests conductor thoroughly, reads conductor code | Has not built an orchestrator — doesn't know LangGraph internals |
+| 4 | **RAG pipeline (implementation)** | 2/5 | Understands RAG conceptually from WOSRI testing | Has not built a retrieval + augmentation + generation system |
+| 5 | **Statistical evaluation methods** | 1.5/5 | Uses pass/fail thresholds | No confidence intervals, Cohen's kappa, or significance testing |
+| 6 | **MCP (Model Context Protocol)** | 2/5 | Knows `agai-api` uses MCP, has not configured it | Has not built an MCP server or defined tool schemas |
+| 7 | **LLM API configuration** | 2/5 | Calls agents via existing interfaces | Has not directly tuned temperature, top_p, or compared model behaviours |
+| 8 | **Vector databases** | 1.5/5 | Knows they exist in WOSRI stack | No hands-on implementation |
+| 9 | **Structured outputs / Pydantic** | 2/5 | Tests structured outputs from agents | Has not defined JSON schemas or Pydantic models from scratch |
+| 10 | **Observability / monitoring for LLMs** | 2/5 | Built DDA reports, aware of monitoring concepts | Has not instrumented an LLM system with production-grade metrics |
 
 ---
 
-## Section 4: Industry Demand Analysis (2024-2025)
+## Section 3: What to Learn (By Role Target)
 
-### 4.1 Most In-Demand Skills in AI Validation / LLM Eval / Agentic QA
+### Stage 1: AI Validation Engineer — Months 1–2 (Weeks 1–8)
 
-Based on job postings (LinkedIn, Levels.fyi, Greenhouse) for roles titled "AI Evaluation Engineer," "LLM QA Engineer," "AI Validation Engineer," "Agentic Systems Engineer":
+| # | Skill | Priority | Why | Course/Resource | Weeks |
+|---|-------|----------|-----|-----------------|-------|
+| 0 | **Python 1.5 → 3.5/5** | CRITICAL | Gates every other skill. Every AI framework is Python. | `PYTHON_ACCELERATOR.md` — parallel track | 1–12 |
+| 1 | **LLM Fundamentals (tokens, inference, temperature)** | HIGH | Formal vocabulary for things you already see in WOSRI daily | Core Track — Section 1 (Weeks 1–2) | 1–2 |
+| 2 | **Agent architecture + tool calling + MCP** | HIGH | Direct clarity on what you test every day | Agentic Track — all of it (Weeks 3–6) | 3–6 |
+| 3 | **Formal Evaluation Frameworks (DeepEval/RAGAS)** | HIGH | Translates DDA custom work into industry vocabulary | Agentic Track eval sections + Stage 1 curriculum | 7–8 |
+| 4 | **Red teaming / adversarial evaluation** | MEDIUM | Career differentiator; extends your existing guardrail testing | Core Track prompting sections + Anthropic guide | 7–8 |
+
+**Stage 1 total: ~Weeks 1–8**
+
+### Stage 2: AI Systems Engineer — Months 2–3 (Weeks 7–12)
+
+| # | Skill | Priority | Why | Course/Resource | Weeks |
+|---|-------|----------|-----|-----------------|-------|
+| 5 | **RAG pipeline (build one)** | HIGH | Most-demanded AI engineering skill; you only test it now | Core Track RAG sections (Weeks 7–9) | 7–9 |
+| 6 | **Structured outputs / Pydantic** | HIGH | Language of all AI frameworks; needed for Python track | Python Accelerator Week 9 + Core Track | 9–10 |
+| 7 | **LLMOps / production patterns** | MEDIUM | Cost, reliability, monitoring — needed for senior roles | Production Track (Weeks 10–12) | 10–12 |
+| 8 | **Observability for LLM systems** | MEDIUM | Extends DDA dashboard work; directly applicable | Production Track monitoring sections | 11–12 |
+
+**Stage 2 total: ~Weeks 7–12**
+
+### Stage 3: Full AI Engineer — Months 4–8 (After this curriculum)
+
+| # | Skill | Priority | Why | Resource |
+|---|-------|----------|-----|---------|
+| 9 | **LangGraph / agent orchestration frameworks** | HIGH | Builds what you currently only test | LangGraph tutorial |
+| 10 | **Statistical evaluation methods** | MEDIUM | Rigour beyond thresholds | Chip Huyen — Designing ML Systems |
+| 11 | **Fine-tuning LLMs (QLoRA)** | MEDIUM | Core Track remainder | Core Track QLoRA sections |
+| 12 | **AI Safety frameworks (NIST AI RMF)** | MEDIUM | Enterprise AI compliance | NIST AI RMF playbook |
+| 13 | **Embedding models + vector DBs** | LOW-MEDIUM | Deeper RAG expertise | Pinecone/Weaviate docs |
+
+---
+
+## Section 4: Industry Demand Analysis (2025–2026)
 
 | Rank | Skill | Demand Signal | Your Status |
-|---|---|---|---|
-| 1 | **LLM Evaluation (RAGAS, DeepEval, custom frameworks)** | Mentioned in 85% of postings | **STRONG** — custom framework, needs formal framework exposure |
-| 2 | **Python (pytest, FastAPI)** | Table stakes | **STRONG** |
-| 3 | **Agent/Tool-Use Testing** | Rapidly growing, 60% of new postings | **STRONG** — 22-test tool invocation suite, multi-agent pipeline testing |
-| 4 | **RAG Pipeline (build + evaluate)** | 70% of AI engineer postings | **GAP** — awareness only |
-| 5 | **Prompt Engineering** | 75% of postings | **STRONG** |
-| 6 | **LangChain / LangGraph** | 50% of postings | **GAP** — hasn't used |
-| 7 | **CI/CD for ML/LLM (MLOps)** | 45% of postings | **PARTIAL** — CI for tests, not for models |
-| 8 | **Statistical Evaluation Methods** | 40% of postings | **GAP** — uses thresholds, lacks statistical rigor |
-| 9 | **Red Teaming / Safety Testing** | Growing fast, 35% of postings | **PARTIAL** — has guardrail tests |
-| 10 | **Structured Outputs / Function Calling** | 55% of AI engineer postings | **PARTIAL** — tests but doesn't implement |
-
-### 4.2 Salary Impact by Skill (2025 US Market)
-
-| Skill Addition | Estimated Salary Impact | Source |
-|---|---|---|
-| LLM Evaluation expertise | +$15-25K over standard SDET | Levels.fyi AI roles |
-| Agent orchestration (LangGraph) | +$20-30K (systems engineer level) | LinkedIn salary data |
-| RAG implementation | +$15-25K | AI engineer postings |
-| AI Safety / Red Team | +$10-20K (niche premium) | Anthropic/OpenAI postings |
-| MLOps / LLMOps | +$10-15K | DevOps → MLOps transition data |
+|------|-------|--------------|-------------|
+| 1 | **LLM Evaluation (RAGAS, DeepEval, custom)** | 85% of postings | **STRONG foundation** — DDA framework; needs formal framework exposure |
+| 2 | **Python (pytest, FastAPI)** | Table stakes | **GAP — developing. Currently 1.5/5, target 3.5/5 by Month 3** |
+| 3 | **Agent/Tool-Use Testing** | 60% of new postings | **STRONG** — 4 months WOSRI, daily agent testing |
+| 4 | **RAG Pipeline (build + evaluate)** | 70% of AI engineer postings | **GAP** — conceptual only, needs implementation |
+| 5 | **Playwright / E2E automation** | 45% of QA-adjacent AI roles | **STRONG** — 3 years, 6 collections, independent authorship |
+| 6 | **Accessibility (WCAG)** | Growing compliance requirement | **STRONG and rare** — 9 production fixes, nightly build, WCAG by number |
+| 7 | **LangChain / LangGraph** | 50% of AI engineer postings | **GAP** — not yet used |
+| 8 | **CI/CD for test automation** | 45% of postings | **STRONG** — nightly builds, Jenkins configuration, GitHub Actions |
+| 9 | **Prompt Engineering** | 75% of postings | **STRONG** — DDA prompt, prompt library, context engineering |
+| 10 | **Statistical Evaluation Methods** | 40% of postings | **GAP** — thresholds only |
 
 ---
 
-## Section 5: Priority Matrix — Pareto Analysis (20% Effort → 80% Career Value)
+## Section 5: Priority Matrix — What Unlocks the Most Career Value
 
-### The Critical 6 Skills (Top 20%)
+### The 3-Month Pareto
 
-These 6 skills, if learned in the next month, unlock 80% of the career value for AI Validation Engineer → AI Systems Engineer progression:
+| Priority | Skill | Weeks | Why This First | Owner Doc |
+|----------|-------|-------|---------------|-----------|
+| **P0** | Python 1.5 → 3.5/5 | 1–12 (parallel) | Without Python, every AI engineering tool is inaccessible. You have the programming instincts from TypeScript — transfer them. | `PYTHON_ACCELERATOR.md` |
+| **P1** | LLM Fundamentals + Agent Architecture | 1–6 | Foundation vocabulary + immediate WOSRI clarity. The Agentic Track alone is worth the 3 courses. | `MASTER_CURRICULUM.md` Weeks 1–6 |
+| **P2** | Formal Evaluation Frameworks | 7–8 | Translates what DDA does informally into what interviewers recognise. | `MASTER_CURRICULUM.md` Week 8 |
+| **P3** | RAG Pipeline (build it) | 7–9 | Most-demanded missing skill. The understanding is there from testing — now build one. | `MASTER_CURRICULUM.md` Weeks 7–9 |
+| **P4** | Production patterns (cost, monitoring) | 10–12 | Rounds out the AI Validation → AI Systems gap. | `MASTER_CURRICULUM.md` Weeks 10–12 |
 
-| Priority | Skill | Hours | ROI Justification | Action This Month |
-|---|---|---|---|---|
-| **P1** | **Formal Eval Frameworks (DeepEval/RAGAS)** | 4 | Translates your custom work into industry-recognized vocabulary; immediate interview value | Install DeepEval, port 5 gold questions, run metrics comparison |
-| **P2** | **Statistical Evaluation Methods** | 4 | Transforms "0.85 threshold" into "statistically significant improvement"; needed for evaluation papers/talks | Read Chip Huyen Ch.10, compute Cohen's kappa on your LLM judge results |
-| **P3** | **LangGraph Agent Orchestration** | 6 | Bridges "I test conductors" to "I build conductors"; highest career multiplier | LangGraph tutorial, build mini-conductor that reimplements AppSelectorTool → App routing |
-| **P4** | **RAG Pipeline (Build)** | 4 | Most-demanded AI engineering skill; your workspace has all the data (20K+ graph nodes) | LangChain RAG tutorial over your graphify-out knowledge graph |
-| **P5** | **Red Teaming / Adversarial Testing** | 3 | Differentiator: very few SDETs can formally red-team LLM agents | Anthropic guide → write 10 adversarial prompts for RI Assistant |
-| **P6** | **Structured Outputs / Function Calling** | 3 | Completes your tool-use testing with implementation knowledge | OpenAI function calling → implement 2 tools with JSON schema enforcement |
-
-**Total: 24 hours out of 44 available → leaves 20 hours for practice, portfolio, and buffer**
-
-### Weekly Plan (1 Month)
-
-| Week | Focus | Hours | Deliverable |
-|---|---|---|---|
-| **Week 1** | P1: DeepEval/RAGAS + P2: Statistical Methods | 10-12 | DeepEval running on your gold questions; Cohen's kappa computed |
-| **Week 2** | P3: LangGraph Agent Orchestration | 10-12 | Mini-conductor prototype that routes queries to 2 specialized agents |
-| **Week 3** | P4: RAG Pipeline + P6: Structured Outputs | 10-12 | RAG pipeline over workspace docs; 2 function-calling tools implemented |
-| **Week 4** | P5: Red Teaming + Portfolio consolidation | 10-12 | 10 adversarial test cases; LinkedIn/portfolio updated with formal terms |
+**The honest 3-month outcome:** You will not be an AI Engineer. You will be a credible,
+interview-ready AI Validation Engineer with a Python foundation and 4 shipped projects.
+That is the correct and realistic target.
 
 ---
 
-## Section 6: Skills You Can Claim Now (With Formal Names)
+## Section 6: What You Can Claim Now (Honest Interview Framing)
 
-For resume/LinkedIn/interviews, reframe your experience using these formal names:
-
-| Resume Bullet (Before) | Resume Bullet (After) |
-|---|---|
-| "Tested AI agents with YAML files" | "Designed and maintained a **declarative evaluation DSL** (YAML) for multi-agent system validation with **LLM-as-Judge evaluation**, **continuous fractional scoring** (0.0–1.0), and **stateful multi-turn dialogue testing**" |
-| "Wrote gold questions for the agent" | "Curated **Gold Standard Evaluation Datasets** for 4 AI agents across single-turn, multi-turn, and adversarial test scenarios" |
-| "Used LLM to check agent responses" | "Implemented **LLM-as-Judge evaluation pipeline** with **multi-dimensional rubrics** (semantic + structural + behavioral) and **hybrid assertion patterns**" |
-| "Tested agent routing" | "Validated **Hierarchical Multi-Agent Orchestration** patterns including intent classification, tool-use verification, and multi-stage pipeline handoffs across 5 specialized domain agents" |
-| "Built test reports on GitHub Pages" | "Designed **automated evaluation reporting infrastructure** with CI/CD-integrated HTML dashboards, fractional scoring visualization, and regression trend tracking" |
-| "Made a knowledge graph of the codebase" | "Applied **automated knowledge graph extraction** (20,886 nodes, 52,533 edges, 1,624 community clusters) for **architectural analysis** and **AI agent context engineering**" |
+| Claim | Honest Framing |
+|-------|---------------|
+| E2E automation | "3 years Playwright + Cucumber on Web of Science — 6 collections built from scratch, 80+ PRs, independent authorship" |
+| Accessibility | "Built and maintained accessibility automation for WOS; shipped 9 WCAG fixes directly to production in Angular/CSS; established nightly accessibility pipeline" |
+| AI agent testing | "4 months functional QA on a production multi-agent AI system — 4 agents, daily ticket flow. I understand LLM non-determinism in ways most QA engineers don't." |
+| DDA framework | "Designed requirements for a data validation framework via a 222-line structured prompt, directed AI to build it, validated the output, used it to produce root cause analysis with 7 findings" |
+| AI tooling | "Designed a 3-agent Playwright system (Planner → Generator → Healer) and a standalone Copilot locator healer utility — AI-assisted builds I planned and directed" |
+| Python | "Python is a current growth area. I am building it alongside AI engineering study." (Do not claim more.) |
 
 ---
 
-## Section 7: Gap-to-Role Mapping
+## Section 7: Gap-to-Role Map
 
 ```
-CURRENT STATE                    STAGE 1 (0-2mo)               STAGE 2 (2-4mo)              STAGE 3 (4-8mo)
-─────────────                    ───────────────               ───────────────              ───────────────
-SDET testing AI agents    ──►   AI Validation Engineer   ──►   AI Systems Engineer    ──►   Full AI Engineer
-                                                                                            (Eval & Safety)
+CURRENT STATE                  MONTH 1-2                    MONTH 3                      MONTHS 4-8
+─────────────                  ─────────                    ───────                      ──────────
+QA Engineer                    AI Validation                AI Systems                   Full AI Engineer
+(WOS + WOSRI)          ──►     Engineer              ──►    Engineer              ──►    (Eval & Safety)
 
-WHAT YOU HAVE:                   WHAT TO ADD:                   WHAT TO ADD:                 WHAT TO ADD:
-✅ LLM-as-Judge                  📚 DeepEval/RAGAS             🔧 LangGraph orchestration   🧠 Fine-tuning
-✅ Gold datasets                 📚 Statistical eval            🔧 RAG pipeline              🧠 RLHF/RLAIF
-✅ Fractional scoring            📚 Failure taxonomy           🔧 Structured outputs        🧠 AI Safety frameworks
-✅ Multi-agent testing           📚 Red teaming                🔧 Prompt optimization       🧠 Embedding models
-✅ YAML test DSL                 📚 Formal eval design         🔧 LLMOps/experiment track   🧠 Distributed ML
-✅ 5-layer test pyramid                                        🔧 Observability
-✅ Context engineering
-✅ Knowledge graphs
+STRONG NOW:                    ADD:                         ADD:                         ADD:
+✅ Playwright/TS 3.5/5         📚 LLM vocabulary            🔧 RAG (build)               🧠 LangGraph
+✅ BDD/Cucumber 4/5            📚 Agent architecture        🔧 Pydantic/structured out   🧠 Statistical eval
+✅ Accessibility 4/5           📚 MCP protocol              🔧 Production patterns       🧠 Fine-tuning
+✅ AI agent testing 4/5        📚 DeepEval/RAGAS             🔧 LLMOps basics             🧠 AI Safety
+✅ CI/CD config 3.5/5          🐍 Python: 1.5→2.5/5         🐍 Python: 2.5→3.5/5        🐍 Python: 3.5→4/5
+✅ Prompt design 3.5/5
 
-TIMELINE:                        Weeks 1-4 (this month)        Months 2-4                   Months 4-8
-HOURS:                           ~24 focused hours              ~30 hours                    ~30 hours
-CREDENTIAL:                      Portfolio + LinkedIn           LangChain cert               NIST AI RMF
+GAP:                           Active plan:
+❌ Python 1.5/5                3_month_master_plan/
+❌ Formal eval frameworks      MASTER_CURRICULUM.md
+❌ RAG implementation
+❌ LangGraph/LLMOps
 ```
 
 ---
 
-*This gap analysis is based on actual workspace artifacts from C:\WOSRI-Workspace\ and current AI engineering job market data (2024-2025). Reassess after completing the 1-month sprint.*
+*Revised: 2026-05-06 | Source: honest_assessment.md v2 + IMPACT_REPORT_2023_2025.md*
+*Active learning plan: curriculum/3_month_master_plan/MASTER_CURRICULUM.md*
+*Supersedes the 1-month sprint plan from 2026-04-29*

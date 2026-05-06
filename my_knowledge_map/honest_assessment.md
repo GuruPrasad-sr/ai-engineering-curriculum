@@ -1,25 +1,52 @@
 ---
 tags: [assessment, skills, work-history, honest-review]
 generated: 2026-05-02
-revised: 2026-05-02
-source: workspace-artifacts + self-correction
+revised: 2026-05-06
+source: workspace-artifacts + impact-reports + self-correction
 ---
 
-# Honest Skills & Work History Assessment (Corrected)
+# Honest Skills & Work History Assessment (Corrected v2)
 
-> **Revision note:** The first version of this assessment was wrong. It attributed
-> ownership of code and frameworks found in the workspace to you without verifying
-> who actually wrote them. You correctly identified the error.
->
-> **This version is based on:** What you have described doing, cross-checked against
-> workspace artifacts (DDA prompt, chat history, conversation patterns in our sessions).
+> **Revision note (v1 → v2):** The first correction fixed overclaiming on WOSRI team-built artifacts.
+> This second revision adds 3 years of WOS work history (2023–2025) that was entirely absent from v1.
+> As a result, TypeScript/Playwright, BDD/Cucumber, CI/CD, and accessibility were all significantly
+> understated. Python remains the genuine gap. This version reflects the complete picture.
 >
 > **Guiding principle:** It is better to have an accurate baseline than a flattering one.
 > You cannot close gaps you don't know you have.
 
 ---
 
-## 1. What You Actually Did (4 months at Clarivate, WOSRI)
+## 1. Background: WOS (Jan 2023 – ~Aug 2025)
+
+Before joining the WOSRI/RI Assistant team, you spent approximately 2.5 years on the
+Web of Science product across three repos: `wos-e2e-smoketests`, `wos-nx-ui`,
+`wos-restapi-automation`.
+
+**What you built and shipped independently:**
+
+- E2E test suites for **6 collections from zero** — Grants, WOS Cancelled Customer,
+  Research Assistant, Policy Citation Index, Research Commons, WOS Publisher Portal
+- **80+ PRs merged** across 3 repos over 3 years
+- **9 WCAG accessibility fixes** shipped directly to production in `wos-nx-ui`
+  (Angular/CSS code, real production commits with WOSAR numbers)
+- Accessibility Nightly Build established — designed and configured the Jenkins pipeline
+- **Playwright Agents POC** — 3-agent system (Planner → Generator → Healer) designed
+  by you, built with AI assistance; reusable architecture for the whole team
+- **GitHub Copilot Healer Mode** (`copilot-healer.ts`) — standalone utility designed
+  and directed by you
+- **Snowplow DUID validation** — parallel analytics validation pipeline with CI integration
+- 30+ locator and stability fixes across all page objects
+- REST API automation for ListBLC from scratch
+- Jenkins pipeline fixes (hanging indefinitely, silent failures, email routing)
+
+This is not background context. This is 3 years of production engineering output.
+It establishes your real TypeScript, Playwright, BDD, accessibility, and CI/CD baseline —
+none of which was visible in the v1 assessment because v1 only looked at WOSRI.
+
+---
+
+## 2. What You Actually Did (last ~4 months at Clarivate, WOSRI)
 
 ### Primary role: Functional QA on 4 AI agents
 
@@ -86,7 +113,7 @@ format requirements, and domain-specific constraints. That is not basic promptin
 
 ---
 
-## 2. Technical Skills (Honest)
+## 3. Technical Skills (Honest — Full Picture)
 
 > **Scale:** 5 = Builds independently | 4 = Proficient with reference | 3 = Working
 > knowledge | 2 = Familiar / AI-assisted | 1 = Exposure only
@@ -97,26 +124,27 @@ format requirements, and domain-specific constraints. That is not basic promptin
 
 | Skill | Rating | Honest Assessment |
 |-------|--------|------------------|
-| **Manual AI agent testing** | 4/5 | 4 months, 4 agents, real production system. You know how these agents behave, what breaks them, and what correct output looks like. This is genuine domain knowledge. |
-| **Functional QA / ticket execution** | 4/5 | Your workflow from ticket to test to done is solid. You understand acceptance criteria, can identify edge cases, and know when something is a bug vs. LLM variance. |
-| **LLM non-determinism (understanding)** | 4/5 | The DDA analysis (finding 1, finding 5) shows you correctly distinguished reproducible bugs from LLM variance. Most QA engineers don't know this distinction exists. |
-| **Exploratory testing of AI systems** | 3.5/5 | You know where AI agents fail — off-topic refusals, entity normalisation edge cases, multi-turn context loss. This is hard to learn from a book. |
-| **BDD / Cucumber / Gherkin (reading)** | 3/5 | You read and work with feature files daily. You review AI-generated Gherkin output. You don't write it from scratch independently. |
-| **Playwright (usage)** | 2/5 | You use AI-generated Playwright tests. You can read them and spot obvious errors. You have not written Playwright selectors or step definitions from scratch. |
-| **API testing** | 2/5 | You understand that the BFF API exists and has contracts. You have not written REST-Assured tests or API test scenarios from scratch yourself. |
+| **E2E test automation (Playwright + Cucumber)** | 4/5 | 3 years authoring Playwright feature files independently across `wos-e2e-smoketests`. Built 6 full E2E suites from zero. Refactored page objects and locators across the entire suite. This is genuine independent authorship, not AI-generated output reviewed. |
+| **BDD / Gherkin / Cucumber** | 4/5 | Hundreds of feature files authored from scratch over 3 years — scenario outlines, backgrounds, step definitions, tag strategies. Reviewed and extended AI-generated feature files on WOSRI. Can author and review with equal confidence. |
+| **Accessibility testing (WCAG)** | 4/5 | Deep practical skill built across 2024–2025. Identified and fixed 9 WCAG violations in production Angular code. Established and configured the Accessibility Nightly Build. Built the WPP accessibility suite from scratch. Knows WCAG criteria by number (2.4.4, 4.1.2, 1.3.1, etc.). |
+| **Manual AI agent testing** | 4/5 | 4 months on WOSRI, 4 agents, real production system. Knows how the agents behave, what breaks them, and when a failure is LLM variance vs. a real bug. Most QA engineers do not work on AI products at all. |
+| **Functional QA / ticket execution** | 4.5/5 | 3 years + 4 months of consistent ticket-to-done workflow across two very different products (traditional web app and AI agent system). |
+| **LLM non-determinism (understanding)** | 4/5 | DDA analysis findings 1 and 5 show correct distinction between reproducible bugs and LLM variance. Rare practical knowledge. |
+| **Exploratory testing of AI systems** | 3.5/5 | Knows where agents fail — off-topic refusals, entity normalisation edge cases, multi-turn context loss. Hard-won from 4 months on WOSRI. |
+| **Page Object Model** | 4/5 | 3 years refactoring and maintaining page objects across `wos-e2e-smoketests`. Standardised locator naming conventions across the entire suite. This is the user's own work, not a team artifact. |
+| **REST API testing** | 2.5/5 | Built ListBLC API automation from scratch. Fixed API automation bugs. Has not written complex API test suites independently — this is the ceiling. |
 
 ---
 
-### AI & Prompting Skills
+### AI & Tooling Skills
 
 | Skill | Rating | Honest Assessment |
 |-------|--------|------------------|
-| **Structured system prompt design** | 3.5/5 | The `DDA prompt.txt` (222 lines) demonstrates real skill: role, context, ordered tasks, quality bar, constraints, output format. This is noticeably above beginner. Within your domain it is genuinely good. |
-| **Conversational AI usage** | 3/5 | In day-to-day AI interactions (including our sessions) you communicate clearly in natural language, give adequate context, and can identify and correct AI errors. You do not apply formal prompt structure in conversation. Both approaches have their place. |
-| **Context provision for AI** | 3.5/5 | You understand that AI tools need context to be useful. You give workspace context, ticket details, and domain knowledge. The workspace map and skill files exist partly because you understood this need. |
-| **AI as code generator** | 3/5 | Your Copilot agent mode workflow (ticket → context → test cases) is effective and reproducible. The skill is in knowing what to ask for and spotting when the output is wrong. |
-| **Recognising AI output errors** | 3.5/5 | You correctly identified that this assessment's first version overclaimed your skills based on workspace artifacts. That is exactly the critical evaluation skill needed when using AI. |
-| **Prompt for framework design** | 3.5/5 | The DDA prompt is structured enough that a senior engineer would recognise it as intentional architecture, not improvised instructions. |
+| **AI-assisted system design** | 4/5 | Designed the Playwright Agents POC (Planner → Generator → Healer architecture), the DDA framework requirements (222-line prompt), and the Copilot Healer strategy. AI wrote the code; you designed what to build and held it to quality. This is a real and distinct skill. |
+| **Structured system prompt design** | 3.5/5 | `DDA prompt.txt` (222 lines) — role, context, ordered tasks, quality bar, constraints, output format. A senior engineer would recognise this as intentional architecture. |
+| **Context provision for AI** | 3.5/5 | `RI_ASSISTANT_WORKSPACE_MAP.md`, skill files, prompt libraries. You understand that AI tools produce better output with better context, and you act on this understanding consistently. |
+| **Conversational AI usage** | 3/5 | Clear goals, adequate context, identifies and corrects AI errors. Does not apply formal prompt structure to everyday requests — informal but effective. |
+| **Recognising AI output errors** | 3.5/5 | Caught overclaims in the v1 assessment, identified incorrect test generations on WOSRI, corrected DDA outputs. Critical evaluation applied consistently. |
 
 ---
 
@@ -124,25 +152,25 @@ format requirements, and domain-specific constraints. That is not basic promptin
 
 | Skill | Rating | Honest Assessment |
 |-------|--------|------------------|
-| **Python** | 1.5/5 | You can read Python and understand what it does. You use AI to write it. You have not independently written production Python from scratch. The DDA framework code was generated by AI. |
-| **TypeScript / Playwright** | 1.5/5 | Same pattern. You read it, review it, don't author it independently. |
-| **YAML** | 2.5/5 | You have worked with the existing YAML test DSL files. You may have added test cases by following existing patterns. You did not design the DSL. |
-| **Java / REST-Assured** | 1/5 | Exposure only — you know the tests exist and what they cover. |
+| **TypeScript / Playwright** | 3.5/5 | 3 years of independent authorship in `wos-e2e-smoketests`. Can write Playwright selectors, step definitions, page objects, and scenario outlines without AI help. Can read and modify Angular/CSS code (9 production fixes in `wos-nx-ui`). The AI-generated workflow on WOSRI was a deliberate efficiency choice, not a capability ceiling. |
+| **Python** | 1.5/5 | **The real gap.** You read Python and understand what it does. You use AI to write it. You have not authored production Python independently. The DDA framework code was entirely AI-generated. No WOS work was Python. This needs to be fixed — that is what the Python track is for. |
+| **YAML** | 3/5 | Authored test files extensively in WOS context. Worked with existing WOSRI YAML DSL. Did not design the WOSRI DSL but is proficient in using and extending YAML structures. |
+| **Java / REST-Assured** | 1/5 | Exposure only. |
 
 ---
 
 ### Software Engineering
 
-| Skill | Rating | Exposure Assessment |
+| Skill | Rating | Honest Assessment |
 |-------|--------|---------------------|
-| **Systems understanding** | 3.5/5 | You understand how the 5-service architecture connects. You know what the conductor does, what the normalizer does, how SSE streaming works. This comes from 4 months of testing it. |
-| **CI/CD (using)** | 2/5 | You trigger GitHub Actions runs and read results. You have not authored CI pipelines. |
-| **Git** | 2/5 | You use Git for daily work (clone, pull, commit, PR). Multi-repo orchestration was a script you may have used, not written. |
-| **Documentation** | 3/5 | You write clear Jira tickets, test notes, and context files. The DDA prompt is strong evidence of this. |
+| **CI/CD (configuration and maintenance)** | 3.5/5 | Set up the Accessibility Nightly Build from scratch. Fixed Jenkins hanging indefinitely. Added error handling to pipeline build stages. Configured email routing by squad. This is pipeline authorship, not just triggering runs. |
+| **Git** | 3.5/5 | 80+ PRs merged across 3 repos over 3 years. Consistent commit discipline, merge conflict resolution, branch management. Evidence is the git log itself. |
+| **Systems understanding (WOSRI)** | 3.5/5 | Understands the 5-service architecture — conductor, normalizer, BFF, UI, agai-api. Knows what each service does and how they connect. Built from 4 months of testing it. |
+| **Documentation** | 3.5/5 | Clear Jira tickets, DDA prompt, workspace map, impact reports, architecture comparison docs. Consistent quality across different output types. |
 
 ---
 
-## 3. Prompting Skills Assessment — From Our Sessions
+## 4. Prompting Skills Assessment — From Our Sessions
 
 > This section looks specifically at how you interact with AI tools, using our
 > conversation history as the primary evidence.
@@ -193,24 +221,26 @@ language and correct errors after the fact.
 
 ---
 
-## 4. Where You Actually Stand
+## 5. Where You Actually Stand
 
 **Honest one-paragraph summary:**
 
-You are a QA Engineer who has spent 4 months testing a production AI product, which
-gives you genuine domain knowledge most QA engineers don't have. You are comfortable
-directing AI tools to generate test code on your behalf, which is a real and valuable
-skill. You wrote one sophisticated system prompt (DDA) that produced a working framework.
-Your understanding of how AI agents fail — LLM variance, non-determinism, entity
-normalisation edge cases — is hard-won practical knowledge. What you are not, yet, is
-a developer of any kind (Python, TypeScript, or otherwise), and you are not an AI
-Validation Engineer in the formal sense (you lack framework vocabulary, statistical
-methods, and red teaming depth). The curriculum is correctly aimed at closing those
-specific gaps.
+You are a QA Engineer with 3 years of production TypeScript/Playwright automation and
+deep accessibility engineering, who spent the last 4 months testing a production
+multi-agent AI system. You can write Playwright tests independently. You cannot write
+Python independently — that is the actual gap and it is a specific one, not a general
+coding gap. You designed two AI-assisted engineering systems (DDA framework and
+Playwright Agents POC) with sufficient sophistication that a senior engineer would
+recognise both as real system designs. Your understanding of how AI agents fail —
+LLM variance, non-determinism, entity normalisation edge cases — is hard-won
+practical knowledge most QA engineers don't have. What you are not, yet, is an
+AI Validation Engineer in the formal sense (you lack framework vocabulary, statistical
+methods, and red teaming depth) and you are not a Python developer. The curriculum
+closes those specific gaps, not programming from scratch.
 
 ---
 
-## 5. What the Curriculum Changes
+## 6. What the Curriculum Changes
 
 Given this accurate baseline, here is what the 30 days actually do for you:
 
@@ -228,7 +258,7 @@ there — you are getting the academic vocabulary for things you already do.
 
 ---
 
-## 6. What to Say in Interviews (With Integrity)
+## 7. What to Say in Interviews (With Integrity)
 
 **Instead of:** "I built an LLM evaluation framework"
 **Say:** "I designed the requirements and architecture for a DDA testing framework and
@@ -236,8 +266,10 @@ directed GitHub Copilot Agent Mode to build it. I validated the output and used 
 produce root cause analysis on a v0/v1 data environment migration."
 
 **Instead of:** "I have advanced Playwright skills"
-**Say:** "I use AI-assisted test generation for Playwright. I provide the feature context,
-review the generated test cases, and validate they match acceptance criteria."
+**Say:** "I have 3 years of Playwright automation across Web of Science — built E2E suites
+for 6 collections from scratch, 80+ PRs merged. On my current AI product team I use
+an AI-assisted workflow for test generation because it's faster, but I can author
+Playwright independently."
 
 **Instead of:** "I test AI agents"
 **Say:** "I've spent 4 months doing functional QA on a production multi-agent AI system —
@@ -245,10 +277,20 @@ review the generated test cases, and validate they match acceptance criteria."
 and built with AI tooling. I understand how LLM non-determinism affects test reliability
 in a way most QA engineers don't."
 
-The last framing is completely honest and significantly stronger than the others.
+**For WOS work:**
+**Say:** "I spent 3 years building E2E and accessibility test automation for Web of Science.
+I shipped 9 WCAG fixes directly to production in Angular/CSS, established a nightly
+accessibility pipeline, and built a 3-agent AI system for autonomous test generation
+and locator healing. My output is in the git log — 80+ PRs across 3 repos."
+
+The last framing is completely honest and significantly stronger than generic claims.
 
 ---
 
-*Corrected: 2026-05-02 | Based on: DA_ChatHistory.md (4,014 lines),
+*Corrected v2: 2026-05-06 | Added WOS background (2023–2025), corrected TypeScript/Playwright from 1.5/5 to 3.5/5,
+added accessibility as 4/5, upgraded BDD/Cucumber to 4/5, upgraded CI/CD to 3.5/5, upgraded Git to 3.5/5.
+Python remains 1.5/5 — the real and specific gap.*
+
+*Corrected v1: 2026-05-02 | Based on: DA_ChatHistory.md (4,014 lines),
 DDA prompt.txt (222 lines), dda_framework/ (66 files), conversation evidence,
 direct self-correction from subject*

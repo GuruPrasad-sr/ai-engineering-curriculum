@@ -17,6 +17,12 @@ status: active
 ## Why This Track Exists Separately
 
 Your current Python level: you read it, you review AI-generated code, you don't author it alone.
+**This is a specific gap, not a general one.** Three years of TypeScript/Playwright
+authorship proves the programming instincts are already there — functions, loops, data structures,
+API calls, classes, test frameworks. Python is the target language of every AI engineering
+framework. Closing this gap is mechanical, not conceptual: the patterns are the same,
+the syntax is different. That is what this track addresses.
+
 The 3 Udemy courses assume you can write Python. They will show code and move on.
 If you cannot type out what you see and modify it, the courses become documentation you watch.
 This track runs in parallel so that by Week 4, you can keep up. By Week 8, you can build.
@@ -27,6 +33,8 @@ By Week 12, you can write Project 1 (Ticket-to-Test Pipeline) without AI writing
 ## Phase 1 — Survival Python (Weeks 1–2)
 
 **Goal:** Read any Python script and explain what every line does. Modify small things confidently.
+If you can read TypeScript, you can already follow Python logic — the goal here is to stop
+mentally translating and start reading Python directly.
 
 ### Week 1 Checklist — The Absolute Basics
 
@@ -379,4 +387,5 @@ That order matters.
 ---
 
 *Python current level: 1.5/5 | Target: 3.5/5 | Timeline: 12 weeks*
+*Gap type: specific (syntax/idioms), not general (programming concepts already present from TypeScript)*
 *Honest Assessment ref: curriculum/my_knowledge_map/honest_assessment.md*

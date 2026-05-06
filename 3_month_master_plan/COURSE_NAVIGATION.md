@@ -30,38 +30,52 @@ status: active
 Do not watch the courses in Udemy's default order. Watch them in this sequence:
 
 ```
-Month 1 (Weeks 1–4):  Core Track — selected sections only (see below)
-Month 2 (Weeks 5–8):  Agentic Track — all of it
-Month 3 (Weeks 9–12): Production Track + Core Track remainder
+Weeks 1–2:    Core Track — LLM Fundamentals + Embeddings only
+Weeks 3–6:    Agentic Track — all of it (moved earlier than intuition suggests)
+Weeks 7–9:    Core Track — RAG + Prompting + Agents Basics sections
+Weeks 10–12:  Production Track — all of it
 ```
+
+**Why Agentic Track is Weeks 3–6, not Weeks 5–8:**
+You have 4 months of daily hands-on agent testing already. Moving the Agentic Track
+earlier means you start connecting formal vocabulary to things you observe every day
+from Week 3 instead of Week 5. RAG and Prompting are deferred 4 weeks but they're
+not prerequisites — you can learn them after you already understand the agent layer.
+
+**Day 1 start instruction:**
+Open the Core Track. Navigate to the LLM Fundamentals section (skip any intro/overview
+sections). Start there. Do not start with the Agentic Track — spend Weeks 1–2 on
+foundations first so the agent content lands on solid ground.
 
 ---
 
-## Month 1 — Core Track Navigation (Weeks 1–4)
+## Weeks 1–2 — Core Track: Foundations (LLM Fundamentals + Embeddings)
 
 ### What to watch (in this order):
 1. **LLM Fundamentals section** — tokens, context windows, temperature, top_p, inference
 2. **Embeddings section** — what they are, why they exist, vector space intuition
-3. **RAG pipeline section** — the full retrieval → augmentation → generation loop
-4. **Prompting techniques section** — zero-shot, few-shot, chain-of-thought, system prompts
-5. **Agents basics section** — tool calling, ReAct pattern, agent loops
 
-### What to skip in Month 1:
-- ❌ QLoRA / fine-tuning sections → defer to Month 3 or skip entirely if AI Validation is your path
+### What to skip in Weeks 1–2:
+- ❌ RAG pipeline sections → defer to Weeks 7–8
+- ❌ Prompting techniques section → defer to Weeks 7–8
+- ❌ Agents basics section → defer to Weeks 7–9 (after Agentic Track gives proper context)
+- ❌ QLoRA / fine-tuning sections → defer to Week 12 or skip entirely
 - ❌ Advanced model training / PEFT → not relevant to your role at this stage
 - ❌ Deep infrastructure sections → skim at 2x, take 1 note max
 
 ### Deep dive (watch twice, then build):
-- ✅ RAG pipeline — the most foundational concept for your current work
-- ✅ Prompting techniques — directly improves your daily WOSRI test prompt design
+- ✅ LLM Fundamentals — directly explains WOSRI non-determinism and agent variance you see daily
+- ✅ Embeddings — directly explains how the normalizer's candidate retrieval works
 
-### Month 1 target: By Week 4, you can explain what happens between a user typing a query into RI Assistant and the response appearing. Not in vague terms — at the token level.
+### Weeks 1–2 target: Can explain token-level flow from WOSRI UI → LLM → response. Can explain why two identical WOSRI queries return different results. Can find where WOSRI sets temperature in the conductor code.
 
 ---
 
-## Month 2 — Agentic Track Navigation (Weeks 5–8)
+## Weeks 3–6 — Agentic Track Navigation (All of it)
 
-### Watch all of it. No skip list.
+**Why this entire track is high priority:**
+Every concept in this track corresponds to something you test in WOSRI every day.
+You will spend 4 weeks learning the formal names for 4 months of daily observation.
 
 **Prioritisation within the course:**
 
@@ -81,13 +95,31 @@ Month 3 (Weeks 9–12): Production Track + Core Track remainder
 - ✅ MCP protocol section — open `agai-api/api/` while watching
 - ✅ Agent evaluation section — open `platform-agent-testing/dda_framework/` while watching
 
-### Month 2 target: By Week 8, you can look at any agent in WOSRI and describe its architecture using formal terms: tools, state, memory, handoff pattern, failure mode surface.
+### Weeks 3–6 target: By Week 6, you can look at any agent in WOSRI and describe its architecture using formal terms: tools, state, memory, handoff pattern, failure mode surface.
 
 ---
 
-## Month 3 — Production Track + Core Track Remainder (Weeks 9–12)
+## Weeks 7–9 — Core Track: RAG + Prompting + Agents Basics
 
-### Production Track navigation:
+### What to watch (in this order):
+1. **RAG pipeline section** — the full retrieval → augmentation → generation loop
+2. **Prompting techniques section** — zero-shot, few-shot, chain-of-thought, system prompts
+3. **Agents basics section** — tool calling, ReAct pattern, agent loops (review + reinforce)
+
+**Why RAG comes after agents, not before:**
+With 4 weeks of agent vocabulary now in place, you'll understand RAG as
+"how the retrieval step feeds context into the agent" rather than as a standalone concept.
+The Agentic Track provides the frame; the Core Track RAG section fills in the mechanism.
+
+### Deep dive (watch twice, then build):
+- ✅ RAG pipeline — the most foundational concept for your current work; build a minimal RAG at Week 7
+- ✅ Prompting techniques — directly applies to DDA prompt analysis at Week 8
+
+### Weeks 7–9 target: Can build a minimal working RAG system. Can review any system prompt and predict its failure modes. Can label every component of RI Assistant as Retrieval, Augmentation, or Generation.
+
+---
+
+## Weeks 10–12 — Production Track (All of it)
 
 | Section | Priority | Why |
 |---------|----------|-----|
@@ -103,7 +135,7 @@ Month 3 (Weeks 9–12): Production Track + Core Track remainder
 - QLoRA / fine-tuning: watch only if time permits, this is an optional stretch
 - Treat it as background knowledge, not required for your 3-month target
 
-### Month 3 target: By Week 12, you can look at the DDA framework and describe what it measures, what it's missing, what a production-grade monitoring system would add, and how you'd extend it.
+### Weeks 10–12 target: By Week 12, you can look at the DDA framework and describe what it measures, what it's missing, what a production-grade monitoring system would add, and how you'd extend it.
 
 ---
 
@@ -171,7 +203,7 @@ Each week, complete:
 - **3–4 course sections** (not individual videos — sections)
 - **1 Python accelerator exercise** (separate from course material)
 - **1 WOSRI connection note** in Obsidian
-- **1 project milestone** (Weeks 5–12)
+- **1 project milestone** (Weeks 7–12)
 
 If you fall behind on video content, that is recoverable.
 If you fall behind on practice and notes, that is not. The video is useless without the output.
@@ -181,16 +213,11 @@ If you fall behind on practice and notes, that is not. The video is useless with
 ## Section Completion Log (use in Obsidian or PROGRESS.md)
 
 ```
-Core Track:
+WEEKS 1–2 — Core Track (Foundations):
   [ ] LLM Fundamentals
   [ ] Embeddings
-  [ ] RAG Pipeline
-  [ ] Prompting Techniques
-  [ ] Agents Basics
-  [ ] QLoRA / Fine-tuning (optional)
-  [ ] Advanced Agents
 
-Agentic Track:
+WEEKS 3–6 — Agentic Track (All of it):
   [ ] Agent Foundations
   [ ] Tool Calling
   [ ] ReAct Pattern
@@ -201,7 +228,13 @@ Agentic Track:
   [ ] Human-in-the-Loop
   [ ] Production Agents
 
-Production Track:
+WEEKS 7–9 — Core Track (RAG + Prompting):
+  [ ] RAG Pipeline
+  [ ] Prompting Techniques
+  [ ] Agents Basics (review + reinforce)
+  [ ] QLoRA / Fine-tuning (optional — Week 12 only if time permits)
+
+WEEKS 10–12 — Production Track (All of it):
   [ ] LLM API at Scale
   [ ] Caching Strategies
   [ ] Deployment Basics
@@ -212,5 +245,6 @@ Production Track:
 
 ---
 
+*Revised: 2026-05-06 | Watch order corrected — Agentic Track moved to Weeks 3–6 (earlier)*
 *Source: Honest Assessment → curriculum/my_knowledge_map/honest_assessment.md*
 *WOSRI Architecture → RI_ASSISTANT_WORKSPACE_MAP.md*

@@ -4,12 +4,28 @@ tags: [home, dashboard]
 
 # AI Engineering Curriculum
 
-> **30 days. SDET → AI Validation Engineer → AI Engineer.**
-> Start here every session. Update your day # and check off completions as you go.
+> **3 months. QA Engineer → AI Validation Engineer → AI Engineer.**
+> Start here every session. The active schedule is the 3-month master plan below.
+> The 30-day stage files are your reference library.
 
 ---
 
-## Navigation
+## Active Plan — 3-Month Master Plan (Start Here)
+
+| File | Purpose |
+|------|---------|
+| [[3_month_master_plan/README\|3-Month Master Plan — README]] | Day 1 action list and overview |
+| [[3_month_master_plan/MASTER_CURRICULUM\|12-Week Schedule]] | Week-by-week plan with milestones, builds, and scenario questions |
+| [[3_month_master_plan/COURSE_NAVIGATION\|Course Navigation]] | Watch order for 3 Udemy courses + Day 1 start instruction |
+| [[3_month_master_plan/PYTHON_ACCELERATOR\|Python Accelerator]] | Parallel Python track — Week 1–12 exercises |
+| [[3_month_master_plan/WORK_INTEGRATION\|Work Integration]] | Day-by-day learning ↔ WOSRI connection plan |
+| [[3_month_master_plan/DAILY_TIMETABLE\|Daily Timetable]] | Session structure and time allocation |
+
+**Course watch order:** Weeks 1–2 = Core Track (Fundamentals + Embeddings) → Weeks 3–6 = Agentic Track (all) → Weeks 7–9 = Core Track (RAG + Prompting) → Weeks 10–12 = Production Track
+
+---
+
+## Reference Library — 30-Day Stage Files
 
 | Stage | Days | Hours | Files |
 |-------|------|-------|-------|
